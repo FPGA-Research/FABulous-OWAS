@@ -1,0 +1,4 @@
+[submodule "OWAS_fabric"]
+	path = OWAS_fabric
+	url = https://github.com/NeverInControl/CrocoScale_Fabric.git
+	branch = OWAS130
