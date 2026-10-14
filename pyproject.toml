@@ -168,6 +168,7 @@ extend_exclude = [
   "fabulous/fabric_generator/gds_generator/script",
   "docs",
   "build_hooks.py",
+  "OWAS_fabric",
 ]
 
 [tool.deptry.per_rule_ignores]
