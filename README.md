@@ -1,186 +1,138 @@
-# FABulous: an Embedded FPGA Framework
+# FABulous for OWAS
 
-[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-[![Python 3.12+](https://img.shields.io/badge/python-3.12+-blue.svg)](https://www.python.org/downloads/)
-[![Code Style](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
-[![Doc Style](https://img.shields.io/badge/%20style-numpy-459db9.svg)](https://numpydoc.readthedocs.io/en/latest/format.html)
-[![Documentation](https://readthedocs.org/projects/fabulous/badge/?version=latest)](https://fabulous.readthedocs.io/en/latest/)
+This repository provides the OWAS project's FABulous fabric generation,
+mapping and bitstream workflow. The CrocoScale FPGA fabric is included as the
+`OWAS_fabric` submodule, including its FLUT5 tile library.
 
-> [!WARNING]
-> **Active Development - Use Tagged Releases for Production**
->
-> The **main** branch is under active development and may contain errors, incomplete features, and breaking changes. We are not responsible for any issues caused by using the development branch.
->
-> **For production use, please use [tagged releases](https://github.com/FPGA-Research/FABulous/releases) or reach out to us for further advice.**
->
-> **Documentation:** Our [documentation](https://fabulous.readthedocs.io/) defaults to the latest development version. You can switch between versions (including the latest development version or specific tagged releases) using the version selector at
-> documentation page. Please ensure you consult the documentation version that matches your installation to avoid compatibility issues.
+## Clone and update
 
-## Overview and Features
-
-FABulous is an open-source embedded FPGA (eFPGA) framework for generating FPGA fabric and integrates the open source CAD tools Yosys and nextpnr for the user design flow. It is silicon-proven through multiple successful tapeouts across TSMC 180nm, Skywater 130nm, IHP SG13G2, GF180MCU, and 28nm CMOS, FABulous provides a full-stack toolchain from CSV-based fabric definition to production-ready GDSII. The framework supports frame-based partial reconfiguration for runtime reconfiguration of individual FPGA regions.
-
-### Key Capabilities
-
-- **Full-stack toolchain** -- Integrates [Yosys](https://github.com/YosysHQ/yosys) (synthesis), [nextpnr](https://github.com/YosysHQ/nextpnr) (place-and-route), and [LibreLane](https://github.com/librelane/librelane) (physical design) for a complete fabric-to-GDSII flow.
-- **CSV-based fabric definition** -- Define custom fabrics through a simple `fabric.csv` configuration file instead of complex XML architecture descriptions, making customisation accessible to hardware engineers without specialised tooling.
-- **Modular tile-based architecture** -- Compose fabrics from look-up tables (LUTs), memory blocks, DSPs, I/O blocks, and arithmetic units, with full support for user-defined custom primitives.
-- **Frame-based partial reconfiguration** -- Supports frame-based partial reconfiguration, enabling runtime reconfiguration of individual FPGA regions without disrupting the rest of the fabric.
-- **Multi-process-node portability** -- Silicon-proven across 5+ process nodes, demonstrating portability across foundry processes.
-- **Production-ready GDS flow** -- Generate GDSII layout directly from fabric definitions using the integrated OpenROAD flow, ready for ASIC fabrication.
-- **Apache 2.0 licence** -- Freely available for both commercial and academic use.
-
-### Silicon Proven
-
-FABulous has been validated through 12+ successful tapeouts across multiple process nodes.
-
-| Process Node | Project | Description |
-| :--- | :--- | :--- |
-| TSMC 180nm | FORTE-ENG1 | eFPGA with RISC-V core and 1K DPRAM |
-| Skywater 130nm | [STRIVE](https://github.com/FPGA-Research/eFPGA---RTL-to-GDS-with-SKY130) | 1440 LUT4s + 180 LUT5s + dual-port memories |
-| Skywater 130nm | [Google MPW-2](https://github.com/nguyendao-uom/eFPGA_v3_caravel) | CLBs, DSPs, RegFiles, BBRAMs |
-| Skywater 130nm | [Google MPW-3](https://github.com/FPGA-Research/FABulous-Sky---a-heterogeneous-FPGA-fabric-in-Skywater130) | FABulous-Sky heterogeneous fabric with custom cells |
-| Skywater 130nm | [Google MPW-3](https://github.com/nguyendao-uom/fuserisc_ver2) | FuseRISC -- RISC-V with eFPGA for TensorFlow Micro |
-| Skywater 130nm | [Google MPW-4](https://github.com/nguyendao-uom/ICESOC) | ICESOC -- Ibex-Crypto-eFPGA for cryptography |
-| Skywater 130nm | [Google MPW-4](https://github.com/nguyendao-uom/rram_testchip) | ReRAM-based eFPGA |
-| Skywater 130nm | [Google MPW-5](https://github.com/nguyendao-uom/open_eFPGA) | Full open-source eFPGA with OpenLane |
-| 130nm / 28nm CMOS | JINST '24 | eFPGA for ML in particle detector readout |
-| IHP SG13G2 | [Greyhound SoC](https://github.com/mole99/greyhound-ihp) | Taped out, bring-up pending |
-| IHP SG13G2 | [MFPGA](https://github.com/EverythingElseWasAlreadyTaken/MFPGA) | eFPGA on IHP shuttle |
-| GF180MCU | [gf180mcu-fabulous-fpga](https://github.com/mole99/gf180mcu-fabulous-fpga) | eFPGA on wafer.space GF180 run |
-
-See the [Chip Gallery](https://fabulous.readthedocs.io/en/latest/gallery/index.html) for detailed descriptions and links to each tapeout.
-
-## System Requirements
-
-To run FABulous, you need Python 3.12 or later. The framework is fully supported on Linux and macOS. Windows users must utilise the Windows Subsystem for Linux (WSL) for compatibility.
-
-For the complete toolchain experience, you will need synthesis and place-and-route tools. We recommend installing the [OSS CAD Suite](https://github.com/YosysHQ/oss-cad-suite-build), which bundles Yosys and nextpnr, using the provided `FABulous install oss-cad-suite` command. Additionally, using `uv` is highly recommended for faster Python package management.
-
-> [!WARNING]
-> Do **not** use the latest nightly build of Yosys. Nightly builds after **29 June** are **not** compatible with current FABulous and will fail. Install Yosys **0.66**, or any build dated **before 29 June**, instead.
-
-## Installation
-
-You can install FABulous either directly from the Python Package Index for standard usage or from the source code if you intend to contribute to the development of the framework.
-
-### Standard Installation (via PyPI)
+Clone with all nested submodules:
 
 ```bash
-pip install fabulous-fpga
-# or
-# uv tool install fabulous-fpga
-FABulous create-project demo
-cd demo && FABulous start
+git clone --recurse-submodules git@github.com:FPGA-Research/FABulous-OWAS.git
+cd FABulous-OWAS
 ```
 
-### Development Installation (from source)
+Update the repository and check out its recorded submodule versions:
 
 ```bash
-git clone https://github.com/FPGA-Research/FABulous
-cd FABulous
+git pull
+git submodule update --init --recursive
+```
+
+To advance submodules to their configured remote branches instead:
+
+```bash
+git submodule update --init --remote --recursive
+```
+
+## Set up the environment
+
+Install `uv`, then run from this repository's root:
+
+```bash
 uv sync
-FABulous create-project demo
-cd demo && FABulous start
+source .venv/bin/activate
 ```
 
-Once installed, you can automatically install the recommended CAD tools by running `FABulous install oss-cad-suite` in your terminal.
+This also makes `task` available. SSH access to `FPGA-Research/FAB-mapper` is
+required: `task fab_mapper` runs it through `uvx` in a separate cached environment
+and checks for upstream updates. Push mapper changes to GitHub before running
+this task to use them.
 
-### Codespaces and Dev Container (quick use)
-
-If you want a pre-configured environment without local dependency setup, you can use the provided container workflows:
-
-- **GitHub Codespaces**: open the repository in Codespaces and use the bundled dev container. GUI tools are exposed through a browser VNC session on port `6080`.
-- **Local Dev Container**: open this repository in VS Code and run **Dev Containers: Reopen in Container** with the `Local` profile. On Linux, the local profile configures X11 forwarding for GUI tools.
-
-For full step-by-step instructions, see the online docs:
-
-- Codespaces guide: <https://fabulous.readthedocs.io/en/latest/getting_started/codespaces.html>
-- Docker and local dev container guide: <https://fabulous.readthedocs.io/en/latest/getting_started/installation/docker.html>
-
-## Using FABulous
-
-Interacting with FABulous is typically done via its interactive shell or through automated scripts. The outputs are systematically organised into a `Fabric` directory for generated RTL and a `Tile` directory for primitive definitions. Bitstreams and logs are stored within your `user_design` folder.
-
-### Essential Commands Table
-
-| Task | Command |
-| :---- | :---- |
-| Create a new project | FABulous create-project \<name> |
-| Launch interactive shell | FABulous start |
-| Run a non-interactive flow | FABulous -p \<dir> run "<cmd1>; <cmd2>; ..." |
-| Execute a TCL script | FABulous -p \<dir> script custom_flow.tcl |
-| View help documentation | FABulous --help |
-
-### Typical Interactive Workflow
+Use the [hausdinge/nextpnr fork](https://github.com/hausdinge/nextpnr) for routing.
+It fixes the FABulous constant-driver pin directions that can cause Router2 to
+fail. Build `nextpnr-generic` alongside this repository using system build tools,
+outside the OSS CAD Suite environment. The build needs CMake, Ninja, a C++17
+compiler, Boost, Eigen3 and Python development headers.
 
 ```bash
-FABulous> run_fab
-FABulous> compile_design user_design/sequential_16bit_en.v
-FABulous> exit
+git clone https://github.com/hausdinge/nextpnr.git ../nextpnr
+cmake -S ../nextpnr -B ../nextpnr/build -G Ninja \
+  -DARCH=generic \
+  -DCMAKE_BUILD_TYPE=Release \
+  -DBUILD_GUI=OFF \
+  -DPython3_EXECUTABLE=/usr/bin/python3
+cmake --build ../nextpnr/build --target nextpnr-generic --parallel 12
 ```
 
-## GUI Setup with FABulator
+The example below uses this executable directly; no system installation is needed.
 
-[FABulator](https://github.com/FPGA-Research/FABulator) is a companion tool that allows you to visually explore the fabrics generated by FABulous and display user designs. To import a fabric into FABulator, you must first generate a geometry file. You can achieve this by running the following commands within the FABulous shell:
+## Map, route and generate the NPU bitstream
+
+The SoC RTL is a separate repository. Use its **`OWAS130` branch** for this
+example. If needed, clone it into the example's source directory:
 
 ```bash
-FABulous> gen_fabric
-FABulous> gen_geometry
+git clone --branch OWAS130 --recurse-submodules \
+  git@github.com:NeverInControl/CrocoScale_SoC.git \
+  demo_CrocoScale_OWAS/CrocoScale_SoC
 ```
 
-*(Note: gen_fabric is only needed once to generate the required switch_matrix.csv files).*
+Provide the RTL files, design top, result directory and the fabric's three
+nextpnr model files. For this NPU, also provide `custom_prims.v` and
+**`fabulous_top_wrapper.v`**: the wrapper defines the peripheral BEL connections,
+locations and global clock. It is merged after mapping the design RTL.
 
-## Contribution Guidelines
+Run this complete example from this repository's root. It uses 12 mapping workers,
+a 300-second selection budget, LUT4 source synthesis and a reported capacity of
+1,152 FLUTs. Equivalence checking is enabled by default.
 
-We welcome community contributions. To ensure consistency, please use uv for environment setup, follow Ruff formatting standards, and use conventional commits for your messages. Comprehensive details regarding environment setup and coding standards are available in our [Development Guide](https://fabulous.readthedocs.io/en/latest/development.html).
+```bash
+source .venv/bin/activate
 
-Before opening a pull request, please read [`CONTRIBUTING.md`](./CONTRIBUTING.md) for the full contribution terms. By submitting a pull request, you agree that your contribution is licensed under the project's [Apache 2.0 License](./LICENSE) and that you have the right to grant this license.
+NPU_RTL="demo_CrocoScale_OWAS/CrocoScale_SoC/SOFT_LOGIC/full"
+FABRIC="OWAS_fabric"
+RESULTS="demo_CrocoScale_OWAS/npu_runs/npu_$(date -u +%Y%m%dT%H%M%SZ)"
 
-Contributors are recognised automatically in [`AUTHORS.md`](./AUTHORS.md), which is regenerated from the GitHub contributors list as part of the release flow.
-
-## Citation
-
-If you use FABulous in your academic research, please cite the following publication:
-
-Dirk Koch, Nguyen Dao, Bea Healy, Jing Yu, and Andrew Attwood. 2021. FABulous: An Embedded FPGA Framework. In <i>The 2021 ACM/SIGDA International Symposium on Field-Programmable Gate Arrays</i> (<i>FPGA '21</i>). Association for Computing Machinery, New York, NY, USA, 45–56. DOI: <https://doi.org/10.1145/3431920.3439302>
-
-[Link to Paper](https://dl.acm.org/doi/pdf/10.1145/3431920.3439302)
-
-```latex
-@inproceedings{koch2021fabulous,
-  title={FABulous: An embedded FPGA framework},
-  author={Koch, Dirk and Dao, Nguyen and Healy, Bea and Yu, Jing and Attwood, Andrew},
-  booktitle={The 2021 ACM/SIGDA International Symposium on Field-Programmable Gate Arrays},
-  pages={45--56},
-  year={2021}
-}
+task fab_mapper -- \
+  "$NPU_RTL/*.sv" \
+  --top-module npu_full_controller \
+  --results-dir "$RESULTS" \
+  --bel-v3-file "$FABRIC/.FABulous/bel.v3.txt" \
+  --pips-file "$FABRIC/.FABulous/pips.txt" \
+  --placement-estimate-file "$FABRIC/.FABulous/placement_estimate.txt" \
+  --custom-primitives "$FABRIC/user_design/custom_prims.v" \
+  --merge-top-wrapper "$NPU_RTL/fabulous_top_wrapper.v" \
+  --workers 12 \
+  --selection-seconds 300 \
+  --source-lut-size 4 \
+  --capacity 1152 \
+  --nextpnr-executable ../nextpnr/build/nextpnr-generic \
+&& task bitstream \
+  FASM="$RESULTS/routing/design.fasm" \
+  BITSTREAM_SPEC="$FABRIC/.FABulous/bitStreamSpec.bin" \
+  OUTPUT="$RESULTS/routing/design.bin"
 ```
 
-## FABulous and Alternative Offerings
+The `&&` runs bitstream generation only after mapping, equivalence and routing
+succeed. The specification comes from the same fabric used for routing, and the
+binary lands at **`$RESULTS/routing/design.bin`**. Use
+`task fab_mapper -- --help` for all mapper options.
 
-| Feature | FABulous | OpenFPGA | PRGA |
-| :--- | :--- | :--- | :--- |
-| Fabric definition format | CSV + Python API | XML | Python API |
-| Partial reconfiguration | Frame-based | Not supported | Not supported |
-| GDS generation | Integrated LibreLane flow | External flow required | External flow required |
-| Silicon tapeouts | 12+ across 5+ process nodes | SOFA series (Skywater 130nm) | None published |
-| CAD tools | Yosys + nextpnr | Yosys + VTR | Yosys + VTR |
-| License | Apache 2.0 | MIT | BSD-3-Clause |
+Each run creates:
 
-## Disclaimer and Limitation of Liability
+```text
+demo_CrocoScale_OWAS/npu_runs/npu_<timestamp>/
+├── mapping/<timestamp>/    # Netlists, mapping IR, settings and progress/report files
+└── routing/
+    ├── design.fasm
+    ├── design.bin          # Generated binary bitstream
+    ├── nextpnr.log
+    ├── commands.log
+    └── summary.rpt
+```
 
-> [!IMPORTANT]  
-> READ CAREFULLY BEFORE USING THIS SOFTWARE!
+## Regenerate a bitstream from an existing run
 
-### Liability
+Set `RESULTS` to the completed run directory, then run:
 
-This software is provided "as is" without any express or implied warranty. In no event shall the authors, contributors, copyright holders, or affiliated institutions be liable for any claims, damages, or other liabilities arising from its use.
+```bash
+FABRIC="OWAS_fabric"
+task bitstream \
+  FASM="$RESULTS/routing/design.fasm" \
+  BITSTREAM_SPEC="$FABRIC/.FABulous/bitStreamSpec.bin" \
+  OUTPUT="$RESULTS/routing/design.bin"
+```
 
-FABulous is an IP generator framework that produces HDL designs for embedded FPGA fabrics intended for ASIC fabrication. The developers and contributors assume no responsibility or liability for any intellectual property generated using this framework, nor are we responsible for any chips, ASICs, FPGAs, or physical devices fabricated using these designs.
-
-While continuous efforts are made to ensure reliability, and several designs have been silicon-proven, we make no guarantees regarding the functional correctness, timing closure, physical design quality, or manufacturing compliance of the generated IP. Silicon-proven status does not imply that FABulous-generated designs can be used without rigorous verification. Users are solely responsible for performing comprehensive whole-system verification (including timing-annotated and formal verification) to ensure the generated fabric functions correctly for their specific application prior to fabrication. Use of this software and any derived products is entirely at your own risk.
-
-### License
-
-For the complete license terms of using the software, see the [Apache 2.0 License](https://opensource.org/licenses/Apache-2.0).
+Use the bitstream specification matching that run's fabric.
