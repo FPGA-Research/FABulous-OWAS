@@ -3,6 +3,26 @@
 version: "3"
 
 tasks:
+  fab_mapper:
+    desc: Run the FAB-mapper FLUT5 flow in an isolated uvx environment
+    cmds:
+      - >-
+        uvx --refresh --python 3.13
+        --from "git+ssh://git@github.com/FPGA-Research/FAB-mapper.git"
+        sat-fab-flut5 {{.CLI_ARGS}}
+
+  # Usage: task bitstream FASM=design.fasm BITSTREAM_SPEC=bitStreamSpec.bin OUTPUT=design.bin
+  bitstream:
+    desc: Generate a binary bitstream from FASM and a matching fabric specification
+    requires:
+      vars: [FASM, BITSTREAM_SPEC, OUTPUT]
+    cmds:
+      - >-
+        uv run bit_gen -genBitstream
+        {{.FASM | shellQuote}}
+        {{.BITSTREAM_SPEC | shellQuote}}
+        {{.OUTPUT | shellQuote}}
+
   docs-build:
     desc: Clean and build the documentation
     dir: docs
