@@ -14,12 +14,12 @@ module EXT_PMOD_1
         input  [7:0] N2END,        //TilePort({S} INPUT N2END[7:0])
         input  [15:0] N4END,        //TilePort({S} INPUT N4END[3:0])
         input  [15:0] NN4END,        //TilePort({S} INPUT NN4END[3:0])
-        input  [0:0] Ci,        //TilePort({S} INPUT Ci[0:0])
         output  [3:0] S1BEG,        //TilePort({S} OUTPUT S1BEG[3:0])
         output  [7:0] S2BEG,        //TilePort({S} OUTPUT S2BEG[7:0])
         output  [7:0] S2BEGb,        //TilePort({S} OUTPUT S2BEGb[7:0])
         output  [15:0] S4BEG,        //TilePort({S} OUTPUT S4BEG[3:0])
         output  [15:0] SS4BEG,        //TilePort({S} OUTPUT SS4BEG[3:0])
+        input  [0:0] Ci,        //TilePort({S} INPUT Ci[0:0])
     //SJUMP ports (supertile BEL interface)
         output  [10-1:0] BASE_TO_TOP,
         input  [5-1:0] TOP_TO_BASE,

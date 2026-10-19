@@ -41,12 +41,6 @@ X0Y0:
   - max_distance: null
     min_distance: null
     pins:
-    - Tile_X0Y0_Ci
-    reverse_result: false
-    sort_mode: bus_major
-  - max_distance: null
-    min_distance: null
-    pins:
     - Tile_X0Y0_S1BEG\[\d+\]
     reverse_result: false
     sort_mode: bus_major
@@ -72,6 +66,12 @@ X0Y0:
     min_distance: null
     pins:
     - Tile_X0Y0_SS4BEG\[\d+\]
+    reverse_result: false
+    sort_mode: bus_major
+  - max_distance: null
+    min_distance: null
+    pins:
+    - Tile_X0Y0_Ci
     reverse_result: false
     sort_mode: bus_major
   - max_distance: null
@@ -190,12 +190,6 @@ X1Y0:
   - max_distance: null
     min_distance: null
     pins:
-    - Tile_X1Y0_Ci
-    reverse_result: false
-    sort_mode: bus_major
-  - max_distance: null
-    min_distance: null
-    pins:
     - Tile_X1Y0_S1BEG\[\d+\]
     reverse_result: false
     sort_mode: bus_major
@@ -221,6 +215,12 @@ X1Y0:
     min_distance: null
     pins:
     - Tile_X1Y0_SS4BEG\[\d+\]
+    reverse_result: false
+    sort_mode: bus_major
+  - max_distance: null
+    min_distance: null
+    pins:
+    - Tile_X1Y0_Ci
     reverse_result: false
     sort_mode: bus_major
   - max_distance: null
