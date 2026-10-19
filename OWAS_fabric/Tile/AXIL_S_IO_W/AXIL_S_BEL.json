@@ -1,0 +1,473 @@
+{
+  "creator": "Yosys 0.68 (git sha1 38e001a6ff74ca434bf4cc02c053f53619160ab0, Release, Clang /nix/store/vk3qyda2xs24bw39aw3drflz4cy7w62y-clang-wrapper-21.1.8/bin/clang++ 21.1.8)",
+  "modules": {
+    "AXIL_S_BEL": {
+      "attributes": {
+        "top": 1,
+        "src": "/mnt/SSD4TB/OWAS_NOV/fabulous_A5/MLFPGA_engine/ip/Fabric/OWAS_fabric/Tile/AXIL_S_IO_W/AXIL_S_BEL.v:3.1-86.10"
+      },
+      "ports": {
+        "SOC_AWADDR": {
+          "direction": "input",
+          "bits": [ 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 ]
+        },
+        "SOC_AWPROT": {
+          "direction": "input",
+          "bits": [ 12, 13, 14 ]
+        },
+        "SOC_AWVALID": {
+          "direction": "input",
+          "bits": [ 15 ]
+        },
+        "SOC_AWREADY": {
+          "direction": "output",
+          "bits": [ 16 ]
+        },
+        "SOC_WDATA": {
+          "direction": "input",
+          "bits": [ 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48 ]
+        },
+        "SOC_WSTRB": {
+          "direction": "input",
+          "bits": [ 49, 50, 51, 52 ]
+        },
+        "SOC_WVALID": {
+          "direction": "input",
+          "bits": [ 53 ]
+        },
+        "SOC_WREADY": {
+          "direction": "output",
+          "bits": [ 54 ]
+        },
+        "SOC_BRESP": {
+          "direction": "output",
+          "bits": [ 55, 56 ]
+        },
+        "SOC_BVALID": {
+          "direction": "output",
+          "bits": [ 57 ]
+        },
+        "SOC_BREADY": {
+          "direction": "input",
+          "bits": [ 58 ]
+        },
+        "SOC_ARADDR": {
+          "direction": "input",
+          "bits": [ 59, 60, 61, 62, 63, 64, 65, 66, 67, 68 ]
+        },
+        "SOC_ARPROT": {
+          "direction": "input",
+          "bits": [ 69, 70, 71 ]
+        },
+        "SOC_ARVALID": {
+          "direction": "input",
+          "bits": [ 72 ]
+        },
+        "SOC_ARREADY": {
+          "direction": "output",
+          "bits": [ 73 ]
+        },
+        "SOC_RDATA": {
+          "direction": "output",
+          "bits": [ 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105 ]
+        },
+        "SOC_RRESP": {
+          "direction": "output",
+          "bits": [ 106, 107 ]
+        },
+        "SOC_RVALID": {
+          "direction": "output",
+          "bits": [ 108 ]
+        },
+        "SOC_RREADY": {
+          "direction": "input",
+          "bits": [ 109 ]
+        },
+        "FAB_AWADDR": {
+          "direction": "output",
+          "bits": [ 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 ]
+        },
+        "FAB_AWPROT": {
+          "direction": "output",
+          "bits": [ 12, 13, 14 ]
+        },
+        "FAB_AWVALID": {
+          "direction": "output",
+          "bits": [ 15 ]
+        },
+        "FAB_AWREADY": {
+          "direction": "input",
+          "bits": [ 16 ]
+        },
+        "FAB_WDATA": {
+          "direction": "output",
+          "bits": [ 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48 ]
+        },
+        "FAB_WSTRB": {
+          "direction": "output",
+          "bits": [ 49, 50, 51, 52 ]
+        },
+        "FAB_WVALID": {
+          "direction": "output",
+          "bits": [ 53 ]
+        },
+        "FAB_WREADY": {
+          "direction": "input",
+          "bits": [ 54 ]
+        },
+        "FAB_BRESP": {
+          "direction": "input",
+          "bits": [ 55, 56 ]
+        },
+        "FAB_BVALID": {
+          "direction": "input",
+          "bits": [ 57 ]
+        },
+        "FAB_BREADY": {
+          "direction": "output",
+          "bits": [ 58 ]
+        },
+        "FAB_ARADDR": {
+          "direction": "output",
+          "bits": [ 59, 60, 61, 62, 63, 64, 65, 66, 67, 68 ]
+        },
+        "FAB_ARPROT": {
+          "direction": "output",
+          "bits": [ 69, 70, 71 ]
+        },
+        "FAB_ARVALID": {
+          "direction": "output",
+          "bits": [ 72 ]
+        },
+        "FAB_ARREADY": {
+          "direction": "input",
+          "bits": [ 73 ]
+        },
+        "FAB_RDATA": {
+          "direction": "input",
+          "bits": [ 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105 ]
+        },
+        "FAB_RRESP": {
+          "direction": "input",
+          "bits": [ 106, 107 ]
+        },
+        "FAB_RVALID": {
+          "direction": "input",
+          "bits": [ 108 ]
+        },
+        "FAB_RREADY": {
+          "direction": "output",
+          "bits": [ 109 ]
+        }
+      },
+      "cells": {
+      },
+      "netnames": {
+        "FAB_ARADDR": {
+          "hide_name": 0,
+          "bits": [ 59, 60, 61, 62, 63, 64, 65, 66, 67, 68 ],
+          "attributes": {
+            "src": "/mnt/SSD4TB/OWAS_NOV/fabulous_A5/MLFPGA_engine/ip/Fabric/OWAS_fabric/Tile/AXIL_S_IO_W/AXIL_S_BEL.v:48.24-48.34"
+          }
+        },
+        "FAB_ARPROT": {
+          "hide_name": 0,
+          "bits": [ 69, 70, 71 ],
+          "attributes": {
+            "src": "/mnt/SSD4TB/OWAS_NOV/fabulous_A5/MLFPGA_engine/ip/Fabric/OWAS_fabric/Tile/AXIL_S_IO_W/AXIL_S_BEL.v:49.24-49.34"
+          }
+        },
+        "FAB_ARREADY": {
+          "hide_name": 0,
+          "bits": [ 73 ],
+          "attributes": {
+            "src": "/mnt/SSD4TB/OWAS_NOV/fabulous_A5/MLFPGA_engine/ip/Fabric/OWAS_fabric/Tile/AXIL_S_IO_W/AXIL_S_BEL.v:51.24-51.35"
+          }
+        },
+        "FAB_ARVALID": {
+          "hide_name": 0,
+          "bits": [ 72 ],
+          "attributes": {
+            "src": "/mnt/SSD4TB/OWAS_NOV/fabulous_A5/MLFPGA_engine/ip/Fabric/OWAS_fabric/Tile/AXIL_S_IO_W/AXIL_S_BEL.v:50.24-50.35"
+          }
+        },
+        "FAB_AWADDR": {
+          "hide_name": 0,
+          "bits": [ 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 ],
+          "attributes": {
+            "src": "/mnt/SSD4TB/OWAS_NOV/fabulous_A5/MLFPGA_engine/ip/Fabric/OWAS_fabric/Tile/AXIL_S_IO_W/AXIL_S_BEL.v:34.24-34.34"
+          }
+        },
+        "FAB_AWPROT": {
+          "hide_name": 0,
+          "bits": [ 12, 13, 14 ],
+          "attributes": {
+            "src": "/mnt/SSD4TB/OWAS_NOV/fabulous_A5/MLFPGA_engine/ip/Fabric/OWAS_fabric/Tile/AXIL_S_IO_W/AXIL_S_BEL.v:35.24-35.34"
+          }
+        },
+        "FAB_AWREADY": {
+          "hide_name": 0,
+          "bits": [ 16 ],
+          "attributes": {
+            "src": "/mnt/SSD4TB/OWAS_NOV/fabulous_A5/MLFPGA_engine/ip/Fabric/OWAS_fabric/Tile/AXIL_S_IO_W/AXIL_S_BEL.v:37.24-37.35"
+          }
+        },
+        "FAB_AWVALID": {
+          "hide_name": 0,
+          "bits": [ 15 ],
+          "attributes": {
+            "src": "/mnt/SSD4TB/OWAS_NOV/fabulous_A5/MLFPGA_engine/ip/Fabric/OWAS_fabric/Tile/AXIL_S_IO_W/AXIL_S_BEL.v:36.24-36.35"
+          }
+        },
+        "FAB_BREADY": {
+          "hide_name": 0,
+          "bits": [ 58 ],
+          "attributes": {
+            "src": "/mnt/SSD4TB/OWAS_NOV/fabulous_A5/MLFPGA_engine/ip/Fabric/OWAS_fabric/Tile/AXIL_S_IO_W/AXIL_S_BEL.v:46.24-46.34"
+          }
+        },
+        "FAB_BRESP": {
+          "hide_name": 0,
+          "bits": [ 55, 56 ],
+          "attributes": {
+            "src": "/mnt/SSD4TB/OWAS_NOV/fabulous_A5/MLFPGA_engine/ip/Fabric/OWAS_fabric/Tile/AXIL_S_IO_W/AXIL_S_BEL.v:44.24-44.33"
+          }
+        },
+        "FAB_BVALID": {
+          "hide_name": 0,
+          "bits": [ 57 ],
+          "attributes": {
+            "src": "/mnt/SSD4TB/OWAS_NOV/fabulous_A5/MLFPGA_engine/ip/Fabric/OWAS_fabric/Tile/AXIL_S_IO_W/AXIL_S_BEL.v:45.24-45.34"
+          }
+        },
+        "FAB_RDATA": {
+          "hide_name": 0,
+          "bits": [ 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105 ],
+          "attributes": {
+            "src": "/mnt/SSD4TB/OWAS_NOV/fabulous_A5/MLFPGA_engine/ip/Fabric/OWAS_fabric/Tile/AXIL_S_IO_W/AXIL_S_BEL.v:53.24-53.33"
+          }
+        },
+        "FAB_RREADY": {
+          "hide_name": 0,
+          "bits": [ 109 ],
+          "attributes": {
+            "src": "/mnt/SSD4TB/OWAS_NOV/fabulous_A5/MLFPGA_engine/ip/Fabric/OWAS_fabric/Tile/AXIL_S_IO_W/AXIL_S_BEL.v:56.24-56.34"
+          }
+        },
+        "FAB_RRESP": {
+          "hide_name": 0,
+          "bits": [ 106, 107 ],
+          "attributes": {
+            "src": "/mnt/SSD4TB/OWAS_NOV/fabulous_A5/MLFPGA_engine/ip/Fabric/OWAS_fabric/Tile/AXIL_S_IO_W/AXIL_S_BEL.v:54.24-54.33"
+          }
+        },
+        "FAB_RVALID": {
+          "hide_name": 0,
+          "bits": [ 108 ],
+          "attributes": {
+            "src": "/mnt/SSD4TB/OWAS_NOV/fabulous_A5/MLFPGA_engine/ip/Fabric/OWAS_fabric/Tile/AXIL_S_IO_W/AXIL_S_BEL.v:55.24-55.34"
+          }
+        },
+        "FAB_WDATA": {
+          "hide_name": 0,
+          "bits": [ 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48 ],
+          "attributes": {
+            "src": "/mnt/SSD4TB/OWAS_NOV/fabulous_A5/MLFPGA_engine/ip/Fabric/OWAS_fabric/Tile/AXIL_S_IO_W/AXIL_S_BEL.v:39.24-39.33"
+          }
+        },
+        "FAB_WREADY": {
+          "hide_name": 0,
+          "bits": [ 54 ],
+          "attributes": {
+            "src": "/mnt/SSD4TB/OWAS_NOV/fabulous_A5/MLFPGA_engine/ip/Fabric/OWAS_fabric/Tile/AXIL_S_IO_W/AXIL_S_BEL.v:42.24-42.34"
+          }
+        },
+        "FAB_WSTRB": {
+          "hide_name": 0,
+          "bits": [ 49, 50, 51, 52 ],
+          "attributes": {
+            "src": "/mnt/SSD4TB/OWAS_NOV/fabulous_A5/MLFPGA_engine/ip/Fabric/OWAS_fabric/Tile/AXIL_S_IO_W/AXIL_S_BEL.v:40.24-40.33"
+          }
+        },
+        "FAB_WVALID": {
+          "hide_name": 0,
+          "bits": [ 53 ],
+          "attributes": {
+            "src": "/mnt/SSD4TB/OWAS_NOV/fabulous_A5/MLFPGA_engine/ip/Fabric/OWAS_fabric/Tile/AXIL_S_IO_W/AXIL_S_BEL.v:41.24-41.34"
+          }
+        },
+        "SOC_ARADDR": {
+          "hide_name": 0,
+          "bits": [ 59, 60, 61, 62, 63, 64, 65, 66, 67, 68 ],
+          "attributes": {
+            "EXTERNAL": 1,
+            "FABulous": 1,
+            "src": "/mnt/SSD4TB/OWAS_NOV/fabulous_A5/MLFPGA_engine/ip/Fabric/OWAS_fabric/Tile/AXIL_S_IO_W/AXIL_S_BEL.v:21.49-21.59"
+          }
+        },
+        "SOC_ARPROT": {
+          "hide_name": 0,
+          "bits": [ 69, 70, 71 ],
+          "attributes": {
+            "EXTERNAL": 1,
+            "FABulous": 1,
+            "src": "/mnt/SSD4TB/OWAS_NOV/fabulous_A5/MLFPGA_engine/ip/Fabric/OWAS_fabric/Tile/AXIL_S_IO_W/AXIL_S_BEL.v:22.49-22.59"
+          }
+        },
+        "SOC_ARREADY": {
+          "hide_name": 0,
+          "bits": [ 73 ],
+          "attributes": {
+            "EXTERNAL": 1,
+            "FABulous": 1,
+            "src": "/mnt/SSD4TB/OWAS_NOV/fabulous_A5/MLFPGA_engine/ip/Fabric/OWAS_fabric/Tile/AXIL_S_IO_W/AXIL_S_BEL.v:24.49-24.60"
+          }
+        },
+        "SOC_ARVALID": {
+          "hide_name": 0,
+          "bits": [ 72 ],
+          "attributes": {
+            "EXTERNAL": 1,
+            "FABulous": 1,
+            "src": "/mnt/SSD4TB/OWAS_NOV/fabulous_A5/MLFPGA_engine/ip/Fabric/OWAS_fabric/Tile/AXIL_S_IO_W/AXIL_S_BEL.v:23.49-23.60"
+          }
+        },
+        "SOC_AWADDR": {
+          "hide_name": 0,
+          "bits": [ 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 ],
+          "attributes": {
+            "EXTERNAL": 1,
+            "FABulous": 1,
+            "src": "/mnt/SSD4TB/OWAS_NOV/fabulous_A5/MLFPGA_engine/ip/Fabric/OWAS_fabric/Tile/AXIL_S_IO_W/AXIL_S_BEL.v:7.49-7.59"
+          }
+        },
+        "SOC_AWPROT": {
+          "hide_name": 0,
+          "bits": [ 12, 13, 14 ],
+          "attributes": {
+            "EXTERNAL": 1,
+            "FABulous": 1,
+            "src": "/mnt/SSD4TB/OWAS_NOV/fabulous_A5/MLFPGA_engine/ip/Fabric/OWAS_fabric/Tile/AXIL_S_IO_W/AXIL_S_BEL.v:8.49-8.59"
+          }
+        },
+        "SOC_AWREADY": {
+          "hide_name": 0,
+          "bits": [ 16 ],
+          "attributes": {
+            "EXTERNAL": 1,
+            "FABulous": 1,
+            "src": "/mnt/SSD4TB/OWAS_NOV/fabulous_A5/MLFPGA_engine/ip/Fabric/OWAS_fabric/Tile/AXIL_S_IO_W/AXIL_S_BEL.v:10.49-10.60"
+          }
+        },
+        "SOC_AWVALID": {
+          "hide_name": 0,
+          "bits": [ 15 ],
+          "attributes": {
+            "EXTERNAL": 1,
+            "FABulous": 1,
+            "src": "/mnt/SSD4TB/OWAS_NOV/fabulous_A5/MLFPGA_engine/ip/Fabric/OWAS_fabric/Tile/AXIL_S_IO_W/AXIL_S_BEL.v:9.49-9.60"
+          }
+        },
+        "SOC_BREADY": {
+          "hide_name": 0,
+          "bits": [ 58 ],
+          "attributes": {
+            "EXTERNAL": 1,
+            "FABulous": 1,
+            "src": "/mnt/SSD4TB/OWAS_NOV/fabulous_A5/MLFPGA_engine/ip/Fabric/OWAS_fabric/Tile/AXIL_S_IO_W/AXIL_S_BEL.v:19.49-19.59"
+          }
+        },
+        "SOC_BRESP": {
+          "hide_name": 0,
+          "bits": [ 55, 56 ],
+          "attributes": {
+            "EXTERNAL": 1,
+            "FABulous": 1,
+            "src": "/mnt/SSD4TB/OWAS_NOV/fabulous_A5/MLFPGA_engine/ip/Fabric/OWAS_fabric/Tile/AXIL_S_IO_W/AXIL_S_BEL.v:17.49-17.58"
+          }
+        },
+        "SOC_BVALID": {
+          "hide_name": 0,
+          "bits": [ 57 ],
+          "attributes": {
+            "EXTERNAL": 1,
+            "FABulous": 1,
+            "src": "/mnt/SSD4TB/OWAS_NOV/fabulous_A5/MLFPGA_engine/ip/Fabric/OWAS_fabric/Tile/AXIL_S_IO_W/AXIL_S_BEL.v:18.49-18.59"
+          }
+        },
+        "SOC_RDATA": {
+          "hide_name": 0,
+          "bits": [ 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105 ],
+          "attributes": {
+            "EXTERNAL": 1,
+            "FABulous": 1,
+            "src": "/mnt/SSD4TB/OWAS_NOV/fabulous_A5/MLFPGA_engine/ip/Fabric/OWAS_fabric/Tile/AXIL_S_IO_W/AXIL_S_BEL.v:26.49-26.58"
+          }
+        },
+        "SOC_RREADY": {
+          "hide_name": 0,
+          "bits": [ 109 ],
+          "attributes": {
+            "EXTERNAL": 1,
+            "FABulous": 1,
+            "src": "/mnt/SSD4TB/OWAS_NOV/fabulous_A5/MLFPGA_engine/ip/Fabric/OWAS_fabric/Tile/AXIL_S_IO_W/AXIL_S_BEL.v:29.49-29.59"
+          }
+        },
+        "SOC_RRESP": {
+          "hide_name": 0,
+          "bits": [ 106, 107 ],
+          "attributes": {
+            "EXTERNAL": 1,
+            "FABulous": 1,
+            "src": "/mnt/SSD4TB/OWAS_NOV/fabulous_A5/MLFPGA_engine/ip/Fabric/OWAS_fabric/Tile/AXIL_S_IO_W/AXIL_S_BEL.v:27.49-27.58"
+          }
+        },
+        "SOC_RVALID": {
+          "hide_name": 0,
+          "bits": [ 108 ],
+          "attributes": {
+            "EXTERNAL": 1,
+            "FABulous": 1,
+            "src": "/mnt/SSD4TB/OWAS_NOV/fabulous_A5/MLFPGA_engine/ip/Fabric/OWAS_fabric/Tile/AXIL_S_IO_W/AXIL_S_BEL.v:28.49-28.59"
+          }
+        },
+        "SOC_WDATA": {
+          "hide_name": 0,
+          "bits": [ 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48 ],
+          "attributes": {
+            "EXTERNAL": 1,
+            "FABulous": 1,
+            "src": "/mnt/SSD4TB/OWAS_NOV/fabulous_A5/MLFPGA_engine/ip/Fabric/OWAS_fabric/Tile/AXIL_S_IO_W/AXIL_S_BEL.v:12.49-12.58"
+          }
+        },
+        "SOC_WREADY": {
+          "hide_name": 0,
+          "bits": [ 54 ],
+          "attributes": {
+            "EXTERNAL": 1,
+            "FABulous": 1,
+            "src": "/mnt/SSD4TB/OWAS_NOV/fabulous_A5/MLFPGA_engine/ip/Fabric/OWAS_fabric/Tile/AXIL_S_IO_W/AXIL_S_BEL.v:15.49-15.59"
+          }
+        },
+        "SOC_WSTRB": {
+          "hide_name": 0,
+          "bits": [ 49, 50, 51, 52 ],
+          "attributes": {
+            "EXTERNAL": 1,
+            "FABulous": 1,
+            "src": "/mnt/SSD4TB/OWAS_NOV/fabulous_A5/MLFPGA_engine/ip/Fabric/OWAS_fabric/Tile/AXIL_S_IO_W/AXIL_S_BEL.v:13.49-13.58"
+          }
+        },
+        "SOC_WVALID": {
+          "hide_name": 0,
+          "bits": [ 53 ],
+          "attributes": {
+            "EXTERNAL": 1,
+            "FABulous": 1,
+            "src": "/mnt/SSD4TB/OWAS_NOV/fabulous_A5/MLFPGA_engine/ip/Fabric/OWAS_fabric/Tile/AXIL_S_IO_W/AXIL_S_BEL.v:14.49-14.59"
+          }
+        }
+      }
+    }
+  }
+}

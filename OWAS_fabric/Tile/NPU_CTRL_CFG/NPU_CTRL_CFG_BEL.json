@@ -1,0 +1,511 @@
+{
+  "creator": "Yosys 0.68 (git sha1 38e001a6ff74ca434bf4cc02c053f53619160ab0, Release, Clang /nix/store/vk3qyda2xs24bw39aw3drflz4cy7w62y-clang-wrapper-21.1.8/bin/clang++ 21.1.8)",
+  "modules": {
+    "NPU_CTRL_CFG_BEL": {
+      "attributes": {
+        "TIE_OFF_SKEW_EN": 0,
+        "BelMap": 1,
+        "FABulous": 1,
+        "dynports": 1,
+        "top": 1,
+        "src": "/mnt/SSD4TB/OWAS_NOV/fabulous_A5/MLFPGA_engine/ip/Fabric/OWAS_fabric/Tile/NPU_CTRL_CFG/NPU_CTRL_CFG_BEL.v:6.1-64.10"
+      },
+      "parameter_default_values": {
+        "NoConfigBits": 1
+      },
+      "ports": {
+        "NPU_QUANT_SHIFT_IN": {
+          "direction": "output",
+          "bits": [ 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31 ]
+        },
+        "NPU_QUANT_SHIFT_EN": {
+          "direction": "output",
+          "bits": [ 32 ]
+        },
+        "NPU_ARRAY_EN": {
+          "direction": "output",
+          "bits": [ 33 ]
+        },
+        "NPU_PSUM_SYSTOLIC_EN": {
+          "direction": "output",
+          "bits": [ 34 ]
+        },
+        "NPU_PSUM_LUT_EN": {
+          "direction": "output",
+          "bits": [ 35 ]
+        },
+        "NPU_SWAP_WEIGHTS": {
+          "direction": "output",
+          "bits": [ 36 ]
+        },
+        "NPU_PSUM_SKEW_EN": {
+          "direction": "output",
+          "bits": [ 37 ]
+        },
+        "NPU_COMPUTE_BANK_SWAP": {
+          "direction": "output",
+          "bits": [ 38 ]
+        },
+        "FAB_QUANT_SHIFT_IN": {
+          "direction": "input",
+          "bits": [ 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68 ]
+        },
+        "FAB_QUANT_SHIFT_EN": {
+          "direction": "input",
+          "bits": [ 69 ]
+        },
+        "FAB_ARRAY_EN": {
+          "direction": "input",
+          "bits": [ 70 ]
+        },
+        "FAB_PSUM_SYSTOLIC_EN": {
+          "direction": "input",
+          "bits": [ 71 ]
+        },
+        "FAB_PSUM_LUT_EN": {
+          "direction": "input",
+          "bits": [ 72 ]
+        },
+        "FAB_SWAP_WEIGHTS": {
+          "direction": "input",
+          "bits": [ 73 ]
+        },
+        "FAB_PSUM_SKEW_EN": {
+          "direction": "input",
+          "bits": [ 74 ]
+        },
+        "FAB_COMPUTE_BANK_SWAP": {
+          "direction": "input",
+          "bits": [ 75 ]
+        },
+        "UserCLK": {
+          "direction": "input",
+          "bits": [ 76 ]
+        },
+        "ConfigBits": {
+          "direction": "input",
+          "bits": [ 77 ]
+        }
+      },
+      "cells": {
+        "$procdff$10": {
+          "hide_name": 1,
+          "type": "$dff",
+          "parameters": {
+            "CLK_POLARITY": 1,
+            "WIDTH": 1
+          },
+          "attributes": {
+            "src": "/mnt/SSD4TB/OWAS_NOV/fabulous_A5/MLFPGA_engine/ip/Fabric/OWAS_fabric/Tile/NPU_CTRL_CFG/NPU_CTRL_CFG_BEL.v:53.5-62.8"
+          },
+          "port_directions": {
+            "CLK": "input",
+            "D": "input",
+            "Q": "output"
+          },
+          "connections": {
+            "CLK": [ 76 ],
+            "D": [ 75 ],
+            "Q": [ 38 ]
+          }
+        },
+        "$procdff$3": {
+          "hide_name": 1,
+          "type": "$dff",
+          "parameters": {
+            "CLK_POLARITY": 1,
+            "WIDTH": 30
+          },
+          "attributes": {
+            "src": "/mnt/SSD4TB/OWAS_NOV/fabulous_A5/MLFPGA_engine/ip/Fabric/OWAS_fabric/Tile/NPU_CTRL_CFG/NPU_CTRL_CFG_BEL.v:53.5-62.8"
+          },
+          "port_directions": {
+            "CLK": "input",
+            "D": "input",
+            "Q": "output"
+          },
+          "connections": {
+            "CLK": [ 76 ],
+            "D": [ 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68 ],
+            "Q": [ 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31 ]
+          }
+        },
+        "$procdff$4": {
+          "hide_name": 1,
+          "type": "$dff",
+          "parameters": {
+            "CLK_POLARITY": 1,
+            "WIDTH": 1
+          },
+          "attributes": {
+            "src": "/mnt/SSD4TB/OWAS_NOV/fabulous_A5/MLFPGA_engine/ip/Fabric/OWAS_fabric/Tile/NPU_CTRL_CFG/NPU_CTRL_CFG_BEL.v:53.5-62.8"
+          },
+          "port_directions": {
+            "CLK": "input",
+            "D": "input",
+            "Q": "output"
+          },
+          "connections": {
+            "CLK": [ 76 ],
+            "D": [ 69 ],
+            "Q": [ 32 ]
+          }
+        },
+        "$procdff$5": {
+          "hide_name": 1,
+          "type": "$dff",
+          "parameters": {
+            "CLK_POLARITY": 1,
+            "WIDTH": 1
+          },
+          "attributes": {
+            "src": "/mnt/SSD4TB/OWAS_NOV/fabulous_A5/MLFPGA_engine/ip/Fabric/OWAS_fabric/Tile/NPU_CTRL_CFG/NPU_CTRL_CFG_BEL.v:53.5-62.8"
+          },
+          "port_directions": {
+            "CLK": "input",
+            "D": "input",
+            "Q": "output"
+          },
+          "connections": {
+            "CLK": [ 76 ],
+            "D": [ 70 ],
+            "Q": [ 33 ]
+          }
+        },
+        "$procdff$6": {
+          "hide_name": 1,
+          "type": "$dff",
+          "parameters": {
+            "CLK_POLARITY": 1,
+            "WIDTH": 1
+          },
+          "attributes": {
+            "src": "/mnt/SSD4TB/OWAS_NOV/fabulous_A5/MLFPGA_engine/ip/Fabric/OWAS_fabric/Tile/NPU_CTRL_CFG/NPU_CTRL_CFG_BEL.v:53.5-62.8"
+          },
+          "port_directions": {
+            "CLK": "input",
+            "D": "input",
+            "Q": "output"
+          },
+          "connections": {
+            "CLK": [ 76 ],
+            "D": [ 71 ],
+            "Q": [ 34 ]
+          }
+        },
+        "$procdff$7": {
+          "hide_name": 1,
+          "type": "$dff",
+          "parameters": {
+            "CLK_POLARITY": 1,
+            "WIDTH": 1
+          },
+          "attributes": {
+            "src": "/mnt/SSD4TB/OWAS_NOV/fabulous_A5/MLFPGA_engine/ip/Fabric/OWAS_fabric/Tile/NPU_CTRL_CFG/NPU_CTRL_CFG_BEL.v:53.5-62.8"
+          },
+          "port_directions": {
+            "CLK": "input",
+            "D": "input",
+            "Q": "output"
+          },
+          "connections": {
+            "CLK": [ 76 ],
+            "D": [ 72 ],
+            "Q": [ 35 ]
+          }
+        },
+        "$procdff$8": {
+          "hide_name": 1,
+          "type": "$dff",
+          "parameters": {
+            "CLK_POLARITY": 1,
+            "WIDTH": 1
+          },
+          "attributes": {
+            "src": "/mnt/SSD4TB/OWAS_NOV/fabulous_A5/MLFPGA_engine/ip/Fabric/OWAS_fabric/Tile/NPU_CTRL_CFG/NPU_CTRL_CFG_BEL.v:53.5-62.8"
+          },
+          "port_directions": {
+            "CLK": "input",
+            "D": "input",
+            "Q": "output"
+          },
+          "connections": {
+            "CLK": [ 76 ],
+            "D": [ 73 ],
+            "Q": [ 36 ]
+          }
+        },
+        "$procdff$9": {
+          "hide_name": 1,
+          "type": "$dff",
+          "parameters": {
+            "CLK_POLARITY": 1,
+            "WIDTH": 1
+          },
+          "attributes": {
+            "src": "/mnt/SSD4TB/OWAS_NOV/fabulous_A5/MLFPGA_engine/ip/Fabric/OWAS_fabric/Tile/NPU_CTRL_CFG/NPU_CTRL_CFG_BEL.v:53.5-62.8"
+          },
+          "port_directions": {
+            "CLK": "input",
+            "D": "input",
+            "Q": "output"
+          },
+          "connections": {
+            "CLK": [ 76 ],
+            "D": [ 78 ],
+            "Q": [ 37 ]
+          }
+        },
+        "$ternary$/mnt/SSD4TB/OWAS_NOV/fabulous_A5/MLFPGA_engine/ip/Fabric/OWAS_fabric/Tile/NPU_CTRL_CFG/NPU_CTRL_CFG_BEL.v:48$1": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": 1
+          },
+          "attributes": {
+            "src": "/mnt/SSD4TB/OWAS_NOV/fabulous_A5/MLFPGA_engine/ip/Fabric/OWAS_fabric/Tile/NPU_CTRL_CFG/NPU_CTRL_CFG_BEL.v:48.28-48.69"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 74 ],
+            "B": [ "1" ],
+            "S": [ 77 ],
+            "Y": [ 78 ]
+          }
+        }
+      },
+      "netnames": {
+        "$0\\NPU_ARRAY_EN[0:0]": {
+          "hide_name": 1,
+          "bits": [ 70 ],
+          "attributes": {
+            "src": "/mnt/SSD4TB/OWAS_NOV/fabulous_A5/MLFPGA_engine/ip/Fabric/OWAS_fabric/Tile/NPU_CTRL_CFG/NPU_CTRL_CFG_BEL.v:53.5-62.8"
+          }
+        },
+        "$0\\NPU_COMPUTE_BANK_SWAP[0:0]": {
+          "hide_name": 1,
+          "bits": [ 75 ],
+          "attributes": {
+            "src": "/mnt/SSD4TB/OWAS_NOV/fabulous_A5/MLFPGA_engine/ip/Fabric/OWAS_fabric/Tile/NPU_CTRL_CFG/NPU_CTRL_CFG_BEL.v:53.5-62.8"
+          }
+        },
+        "$0\\NPU_PSUM_LUT_EN[0:0]": {
+          "hide_name": 1,
+          "bits": [ 72 ],
+          "attributes": {
+            "src": "/mnt/SSD4TB/OWAS_NOV/fabulous_A5/MLFPGA_engine/ip/Fabric/OWAS_fabric/Tile/NPU_CTRL_CFG/NPU_CTRL_CFG_BEL.v:53.5-62.8"
+          }
+        },
+        "$0\\NPU_PSUM_SKEW_EN[0:0]": {
+          "hide_name": 1,
+          "bits": [ 78 ],
+          "attributes": {
+            "src": "/mnt/SSD4TB/OWAS_NOV/fabulous_A5/MLFPGA_engine/ip/Fabric/OWAS_fabric/Tile/NPU_CTRL_CFG/NPU_CTRL_CFG_BEL.v:53.5-62.8"
+          }
+        },
+        "$0\\NPU_PSUM_SYSTOLIC_EN[0:0]": {
+          "hide_name": 1,
+          "bits": [ 71 ],
+          "attributes": {
+            "src": "/mnt/SSD4TB/OWAS_NOV/fabulous_A5/MLFPGA_engine/ip/Fabric/OWAS_fabric/Tile/NPU_CTRL_CFG/NPU_CTRL_CFG_BEL.v:53.5-62.8"
+          }
+        },
+        "$0\\NPU_QUANT_SHIFT_EN[0:0]": {
+          "hide_name": 1,
+          "bits": [ 69 ],
+          "attributes": {
+            "src": "/mnt/SSD4TB/OWAS_NOV/fabulous_A5/MLFPGA_engine/ip/Fabric/OWAS_fabric/Tile/NPU_CTRL_CFG/NPU_CTRL_CFG_BEL.v:53.5-62.8"
+          }
+        },
+        "$0\\NPU_QUANT_SHIFT_IN[29:0]": {
+          "hide_name": 1,
+          "bits": [ 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68 ],
+          "attributes": {
+            "src": "/mnt/SSD4TB/OWAS_NOV/fabulous_A5/MLFPGA_engine/ip/Fabric/OWAS_fabric/Tile/NPU_CTRL_CFG/NPU_CTRL_CFG_BEL.v:53.5-62.8"
+          }
+        },
+        "$0\\NPU_SWAP_WEIGHTS[0:0]": {
+          "hide_name": 1,
+          "bits": [ 73 ],
+          "attributes": {
+            "src": "/mnt/SSD4TB/OWAS_NOV/fabulous_A5/MLFPGA_engine/ip/Fabric/OWAS_fabric/Tile/NPU_CTRL_CFG/NPU_CTRL_CFG_BEL.v:53.5-62.8"
+          }
+        },
+        "$ternary$/mnt/SSD4TB/OWAS_NOV/fabulous_A5/MLFPGA_engine/ip/Fabric/OWAS_fabric/Tile/NPU_CTRL_CFG/NPU_CTRL_CFG_BEL.v:48$1_Y": {
+          "hide_name": 1,
+          "bits": [ 78 ],
+          "attributes": {
+            "src": "/mnt/SSD4TB/OWAS_NOV/fabulous_A5/MLFPGA_engine/ip/Fabric/OWAS_fabric/Tile/NPU_CTRL_CFG/NPU_CTRL_CFG_BEL.v:48.28-48.69"
+          }
+        },
+        "ConfigBits": {
+          "hide_name": 0,
+          "bits": [ 77 ],
+          "attributes": {
+            "FABulous": 1,
+            "GLOBAL": 1,
+            "single_bit_vector": 1,
+            "src": "/mnt/SSD4TB/OWAS_NOV/fabulous_A5/MLFPGA_engine/ip/Fabric/OWAS_fabric/Tile/NPU_CTRL_CFG/NPU_CTRL_CFG_BEL.v:41.58-41.68"
+          }
+        },
+        "FAB_ARRAY_EN": {
+          "hide_name": 0,
+          "bits": [ 70 ],
+          "attributes": {
+            "src": "/mnt/SSD4TB/OWAS_NOV/fabulous_A5/MLFPGA_engine/ip/Fabric/OWAS_fabric/Tile/NPU_CTRL_CFG/NPU_CTRL_CFG_BEL.v:26.24-26.36"
+          }
+        },
+        "FAB_COMPUTE_BANK_SWAP": {
+          "hide_name": 0,
+          "bits": [ 75 ],
+          "attributes": {
+            "src": "/mnt/SSD4TB/OWAS_NOV/fabulous_A5/MLFPGA_engine/ip/Fabric/OWAS_fabric/Tile/NPU_CTRL_CFG/NPU_CTRL_CFG_BEL.v:31.24-31.45"
+          }
+        },
+        "FAB_PSUM_LUT_EN": {
+          "hide_name": 0,
+          "bits": [ 72 ],
+          "attributes": {
+            "src": "/mnt/SSD4TB/OWAS_NOV/fabulous_A5/MLFPGA_engine/ip/Fabric/OWAS_fabric/Tile/NPU_CTRL_CFG/NPU_CTRL_CFG_BEL.v:28.24-28.39"
+          }
+        },
+        "FAB_PSUM_SKEW_EN": {
+          "hide_name": 0,
+          "bits": [ 74 ],
+          "attributes": {
+            "src": "/mnt/SSD4TB/OWAS_NOV/fabulous_A5/MLFPGA_engine/ip/Fabric/OWAS_fabric/Tile/NPU_CTRL_CFG/NPU_CTRL_CFG_BEL.v:30.24-30.40"
+          }
+        },
+        "FAB_PSUM_SYSTOLIC_EN": {
+          "hide_name": 0,
+          "bits": [ 71 ],
+          "attributes": {
+            "src": "/mnt/SSD4TB/OWAS_NOV/fabulous_A5/MLFPGA_engine/ip/Fabric/OWAS_fabric/Tile/NPU_CTRL_CFG/NPU_CTRL_CFG_BEL.v:27.24-27.44"
+          }
+        },
+        "FAB_QUANT_SHIFT_EN": {
+          "hide_name": 0,
+          "bits": [ 69 ],
+          "attributes": {
+            "src": "/mnt/SSD4TB/OWAS_NOV/fabulous_A5/MLFPGA_engine/ip/Fabric/OWAS_fabric/Tile/NPU_CTRL_CFG/NPU_CTRL_CFG_BEL.v:25.24-25.42"
+          }
+        },
+        "FAB_QUANT_SHIFT_IN": {
+          "hide_name": 0,
+          "bits": [ 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68 ],
+          "attributes": {
+            "src": "/mnt/SSD4TB/OWAS_NOV/fabulous_A5/MLFPGA_engine/ip/Fabric/OWAS_fabric/Tile/NPU_CTRL_CFG/NPU_CTRL_CFG_BEL.v:24.24-24.42"
+          }
+        },
+        "FAB_SWAP_WEIGHTS": {
+          "hide_name": 0,
+          "bits": [ 73 ],
+          "attributes": {
+            "src": "/mnt/SSD4TB/OWAS_NOV/fabulous_A5/MLFPGA_engine/ip/Fabric/OWAS_fabric/Tile/NPU_CTRL_CFG/NPU_CTRL_CFG_BEL.v:29.24-29.40"
+          }
+        },
+        "NPU_ARRAY_EN": {
+          "hide_name": 0,
+          "bits": [ 33 ],
+          "attributes": {
+            "EXTERNAL": 1,
+            "FABulous": 1,
+            "src": "/mnt/SSD4TB/OWAS_NOV/fabulous_A5/MLFPGA_engine/ip/Fabric/OWAS_fabric/Tile/NPU_CTRL_CFG/NPU_CTRL_CFG_BEL.v:14.49-14.61"
+          }
+        },
+        "NPU_COMPUTE_BANK_SWAP": {
+          "hide_name": 0,
+          "bits": [ 38 ],
+          "attributes": {
+            "EXTERNAL": 1,
+            "FABulous": 1,
+            "src": "/mnt/SSD4TB/OWAS_NOV/fabulous_A5/MLFPGA_engine/ip/Fabric/OWAS_fabric/Tile/NPU_CTRL_CFG/NPU_CTRL_CFG_BEL.v:19.49-19.70"
+          }
+        },
+        "NPU_PSUM_LUT_EN": {
+          "hide_name": 0,
+          "bits": [ 35 ],
+          "attributes": {
+            "EXTERNAL": 1,
+            "FABulous": 1,
+            "src": "/mnt/SSD4TB/OWAS_NOV/fabulous_A5/MLFPGA_engine/ip/Fabric/OWAS_fabric/Tile/NPU_CTRL_CFG/NPU_CTRL_CFG_BEL.v:16.49-16.64"
+          }
+        },
+        "NPU_PSUM_SKEW_EN": {
+          "hide_name": 0,
+          "bits": [ 37 ],
+          "attributes": {
+            "EXTERNAL": 1,
+            "FABulous": 1,
+            "src": "/mnt/SSD4TB/OWAS_NOV/fabulous_A5/MLFPGA_engine/ip/Fabric/OWAS_fabric/Tile/NPU_CTRL_CFG/NPU_CTRL_CFG_BEL.v:18.49-18.65"
+          }
+        },
+        "NPU_PSUM_SYSTOLIC_EN": {
+          "hide_name": 0,
+          "bits": [ 34 ],
+          "attributes": {
+            "EXTERNAL": 1,
+            "FABulous": 1,
+            "src": "/mnt/SSD4TB/OWAS_NOV/fabulous_A5/MLFPGA_engine/ip/Fabric/OWAS_fabric/Tile/NPU_CTRL_CFG/NPU_CTRL_CFG_BEL.v:15.49-15.69"
+          }
+        },
+        "NPU_QUANT_SHIFT_EN": {
+          "hide_name": 0,
+          "bits": [ 32 ],
+          "attributes": {
+            "EXTERNAL": 1,
+            "FABulous": 1,
+            "src": "/mnt/SSD4TB/OWAS_NOV/fabulous_A5/MLFPGA_engine/ip/Fabric/OWAS_fabric/Tile/NPU_CTRL_CFG/NPU_CTRL_CFG_BEL.v:13.49-13.67"
+          }
+        },
+        "NPU_QUANT_SHIFT_IN": {
+          "hide_name": 0,
+          "bits": [ 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31 ],
+          "attributes": {
+            "EXTERNAL": 1,
+            "FABulous": 1,
+            "src": "/mnt/SSD4TB/OWAS_NOV/fabulous_A5/MLFPGA_engine/ip/Fabric/OWAS_fabric/Tile/NPU_CTRL_CFG/NPU_CTRL_CFG_BEL.v:12.49-12.67"
+          }
+        },
+        "NPU_SWAP_WEIGHTS": {
+          "hide_name": 0,
+          "bits": [ 36 ],
+          "attributes": {
+            "EXTERNAL": 1,
+            "FABulous": 1,
+            "src": "/mnt/SSD4TB/OWAS_NOV/fabulous_A5/MLFPGA_engine/ip/Fabric/OWAS_fabric/Tile/NPU_CTRL_CFG/NPU_CTRL_CFG_BEL.v:17.49-17.65"
+          }
+        },
+        "TIE_OFF_SKEW_EN": {
+          "hide_name": 0,
+          "bits": [ 77 ],
+          "attributes": {
+            "src": "/mnt/SSD4TB/OWAS_NOV/fabulous_A5/MLFPGA_engine/ip/Fabric/OWAS_fabric/Tile/NPU_CTRL_CFG/NPU_CTRL_CFG_BEL.v:47.10-47.25"
+          }
+        },
+        "UserCLK": {
+          "hide_name": 0,
+          "bits": [ 76 ],
+          "attributes": {
+            "EXTERNAL": 1,
+            "FABulous": 1,
+            "SHARED_PORT": 1,
+            "src": "/mnt/SSD4TB/OWAS_NOV/fabulous_A5/MLFPGA_engine/ip/Fabric/OWAS_fabric/Tile/NPU_CTRL_CFG/NPU_CTRL_CFG_BEL.v:36.54-36.61"
+          }
+        },
+        "active_skew_en": {
+          "hide_name": 0,
+          "bits": [ 78 ],
+          "attributes": {
+            "src": "/mnt/SSD4TB/OWAS_NOV/fabulous_A5/MLFPGA_engine/ip/Fabric/OWAS_fabric/Tile/NPU_CTRL_CFG/NPU_CTRL_CFG_BEL.v:48.10-48.24"
+          }
+        }
+      }
+    }
+  }
+}

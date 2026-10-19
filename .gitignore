@@ -17,6 +17,7 @@ librelane_plugin_fabulous
 build
 
 # Documentation build artifacts (auto-generated in CI)
+runs/
 docs/build/
 docs/source/references/*.rst
 !docs/source/references/index.rst
