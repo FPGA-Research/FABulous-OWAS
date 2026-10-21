@@ -28,6 +28,23 @@ git submodule update --init --remote --recursive
 
 ## Set up the environment
 
+> [!IMPORTANT]
+> The `fabulous-bit-gen` dependency comes from the private
+> `FPGA-Research/FABulous-bit-gen-OWAS` repository (you need read access to it)
+> and is pinned by its HTTPS URL. Without credentials for it, `uv sync` fails with `could not read Username
+> for 'https://github.com'`.
+>
+> Skip this step if you access GitHub over HTTPS with `gh auth setup-git` or a
+> token. The rewrite would switch that repository to SSH and break fetching it
+> without an SSH key. Otherwise, run this once per machine so git fetches that
+> repository over SSH:
+>
+> ```bash
+> git config --global \
+>   url."git@github.com:FPGA-Research/FABulous-bit-gen-OWAS".insteadOf \
+>   "https://github.com/FPGA-Research/FABulous-bit-gen-OWAS"
+> ```
+
 Install `uv`, then run from this repository's root:
 
 ```bash
