@@ -11,6 +11,18 @@ tasks:
         --from "git+ssh://git@github.com/FPGA-Research/FAB-mapper.git"
         sat-fab-flut5 {{.CLI_ARGS}}
 
+  nextpnr:
+    desc: Build upstream nextpnr-generic in nextpnr/ (for use outside Nix)
+    status:
+      - test -d nextpnr
+    cmds:
+      - git clone https://github.com/YosysHQ/nextpnr.git nextpnr
+      - >-
+        cmake -S nextpnr -B nextpnr/build -G Ninja
+        -DARCH=generic -DCMAKE_BUILD_TYPE=Release -DBUILD_GUI=OFF
+        -DPython3_EXECUTABLE=/usr/bin/python3
+      - cmake --build nextpnr/build --target nextpnr-generic
+
   # Usage: task bitstream FASM=design.fasm BITSTREAM_SPEC=bitStreamSpec.bin OUTPUT=design.bin
   bitstream:
     desc: Generate a binary bitstream from FASM and a matching fabric specification
