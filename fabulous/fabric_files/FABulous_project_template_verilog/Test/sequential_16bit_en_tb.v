@@ -12,7 +12,16 @@ module sequential_16bit_en_tb ();
     reg         resetn              = 1'b1 ;
     reg         self_write_strobe   = 1'b0 ;
     reg  [31:0] self_write_data     = 32'b0;
+`ifdef CONFIG_SPI
+    // ConfigInterface,SPI: the SPI port stays idle, configuration below
+    // uses the parallel port (see sequential_16bit_en_spi_tb for SPI)
+    reg         spi_sclk            = 1'b0 ;
+    reg         spi_cs_n            = 1'b1 ;
+    reg         spi_mosi            = 1'b0 ;
+    wire        spi_miso                   ;
+`else
     reg         rx                  = 1'b1 ;
+`endif
     wire        com_active                 ;
     wire        receive_led                ;
     reg         s_clk               = 1'b0 ;
@@ -30,7 +39,14 @@ module sequential_16bit_en_tb ();
         .resetn         (resetn         ),
         .SelfWriteStrobe(self_write_strobe),
         .SelfWriteData  (self_write_data  ),
+`ifdef CONFIG_SPI
+        .SPI_SCLK       (spi_sclk       ),
+        .SPI_CS_N       (spi_cs_n       ),
+        .SPI_MOSI       (spi_mosi       ),
+        .SPI_MISO       (spi_miso       ),
+`else
         .Rx             (rx             ),
+`endif
         .ComActive      (com_active      ),
         .ReceiveLED     (receive_led     ),
         .s_clk          (s_clk          ),

@@ -5,7 +5,7 @@ from pathlib import Path
 import pytest
 
 from fabulous.custom_exception import InvalidFabricParameter, InvalidPortType
-from fabulous.fabric_definition.define import IO, Direction, Side
+from fabulous.fabric_definition.define import IO, ConfigInterface, Direction, Side
 from fabulous.fabric_generator.parser.parse_csv import (
     parse_port_line,
     parseFabricCSV,
@@ -203,6 +203,48 @@ class TestIncludeBorderRows:
         init_context(project)
         with pytest.raises(InvalidFabricParameter, match="IncludeBorderRows"):
             parseFabricCSV(str(self._set_value(project, "yes")))
+
+
+class TestConfigInterface:
+    """`ConfigInterface` sets `Fabric.config_interface`; absent means UART."""
+
+    @staticmethod
+    def _set_value(project: Path, value: str | None) -> Path:
+        """Replace the template's `ConfigInterface` row; `None` drops it."""
+        csv = project / "fabric.csv"
+        lines = [
+            line
+            for line in csv.read_text().splitlines(keepends=True)
+            if not line.startswith("ConfigInterface")
+        ]
+        text = "".join(lines)
+        if value is not None:
+            text = text.replace(
+                "ParametersBegin,", f"ParametersBegin,\nConfigInterface,{value},", 1
+            )
+        csv.write_text(text)
+        return csv
+
+    @pytest.mark.parametrize(
+        ("value", "expected"),
+        [("UART", ConfigInterface.UART), ("SPI", ConfigInterface.SPI)],
+    )
+    def test_value_is_parsed(
+        self, project: Path, value: str, expected: ConfigInterface
+    ) -> None:
+        init_context(project)
+        fabric = parseFabricCSV(str(self._set_value(project, value)))
+        assert fabric.config_interface is expected
+
+    def test_default_is_uart(self, project: Path) -> None:
+        init_context(project)
+        fabric = parseFabricCSV(str(self._set_value(project, None)))
+        assert fabric.config_interface is ConfigInterface.UART
+
+    def test_invalid_value_raises(self, project: Path) -> None:
+        init_context(project)
+        with pytest.raises(InvalidFabricParameter, match="ConfigInterface"):
+            parseFabricCSV(str(self._set_value(project, "I2C")))
 
 
 @pytest.mark.parametrize("prefix", ["", "MUL_"])

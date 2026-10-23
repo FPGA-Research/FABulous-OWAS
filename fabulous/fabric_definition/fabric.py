@@ -12,6 +12,7 @@ from pathlib import Path
 from fabulous.fabric_definition.bel import Bel
 from fabulous.fabric_definition.define import (
     ConfigBitMode,
+    ConfigInterface,
     Direction,
     MultiplexerStyle,
     Side,
@@ -77,6 +78,8 @@ class Fabric:
         are kept in the bitstream instead of being filtered out.
     includeBorderRows : bool
         Whether the top and bottom rows get configuration frames. Default False.
+    config_interface : ConfigInterface
+        Serial configuration ports of the top wrapper. Default UART.
     syncHeaderHex : str
         Hex string of the 20-byte sync header written at the start of every
         binary bitstream.
@@ -122,6 +125,7 @@ class Fabric:
     userCLKSide: Side = Side.SOUTH
     multiClkDomains: bool = False
     includeBorderRows: bool = False
+    config_interface: ConfigInterface = ConfigInterface.UART
     syncHeaderHex: str = "00AAFF01000000010000000000000000FAB0FAB1"
 
     tileDic: dict[str, Tile] = field(default_factory=dict)
@@ -500,6 +504,7 @@ class Fabric:
         fabric += f"userCLKSide: {self.userCLKSide}\n"
         fabric += f"multiClkDomains: {self.multiClkDomains}\n"
         fabric += f"includeBorderRows: {self.includeBorderRows}\n"
+        fabric += f"config_interface: {self.config_interface}\n"
         fabric += f"tileDic: {list(self.tileDic.keys())}\n"
         return fabric
 

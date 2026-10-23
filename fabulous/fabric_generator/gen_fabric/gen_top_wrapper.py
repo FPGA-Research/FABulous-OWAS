@@ -9,8 +9,9 @@ interfaces.
 import re
 from pathlib import Path
 
+from fabulous.custom_exception import InvalidFabricParameter
 from fabulous.fabric_cad.gen_bitstream_spec import border_rows_have_config_bits
-from fabulous.fabric_definition.define import IO
+from fabulous.fabric_definition.define import IO, ConfigInterface
 from fabulous.fabric_definition.fabric import Fabric
 from fabulous.fabric_generator.code_generator.code_generator import CodeGenerator
 from fabulous.fabric_generator.code_generator.code_generator_Verilog import (
@@ -27,6 +28,12 @@ def generateTopWrapper(writer: CodeGenerator, fabric: Fabric) -> None:
 
     This includes features that are not located inside the fabric such as BRAM.
     """
+    spi_config = fabric.config_interface == ConfigInterface.SPI
+    if spi_config and isinstance(writer, VHDLCodeGenerator):
+        raise InvalidFabricParameter(
+            "ConfigInterface SPI is only supported for Verilog fabrics: the VHDL "
+            "eFPGA_Config has no SPI receiver."
+        )
 
     def split_port(p: str) -> tuple[tuple[int, int], tuple[int, ...], str]:
         """Parse and split a port name into components for sorting and grouping.
@@ -165,7 +172,13 @@ def generateTopWrapper(writer: CodeGenerator, fabric: Fabric) -> None:
     writer.addPortVector(
         "SelfWriteData", IO.INPUT, fabric.frameBitsPerRow - 1, indentLevel=2
     )
-    writer.addPortScalar("Rx", IO.INPUT, indentLevel=2)
+    if spi_config:
+        writer.addPortScalar("SPI_SCLK", IO.INPUT, indentLevel=2)
+        writer.addPortScalar("SPI_CS_N", IO.INPUT, indentLevel=2)
+        writer.addPortScalar("SPI_MOSI", IO.INPUT, indentLevel=2)
+        writer.addPortScalar("SPI_MISO", IO.OUTPUT, indentLevel=2)
+    else:
+        writer.addPortScalar("Rx", IO.INPUT, indentLevel=2)
     writer.addPortScalar("ComActive", IO.OUTPUT, indentLevel=2)
     writer.addPortScalar("ReceiveLED", IO.OUTPUT, indentLevel=2)
     writer.addPortScalar("s_clk", IO.INPUT, indentLevel=2)
@@ -230,6 +243,19 @@ def generateTopWrapper(writer: CodeGenerator, fabric: Fabric) -> None:
         writer.addPreprocIfNotDef("EMULATION")
 
     # the config module
+    # UART keeps the original instance, so projects whose eFPGA_Config predates
+    # the ConfigInterface parameter still match it.
+    if spi_config:
+        serial_ports = [
+            ("SPI_SCLK", "SPI_SCLK"),
+            ("SPI_CS_N", "SPI_CS_N"),
+            ("SPI_MOSI", "SPI_MOSI"),
+            ("SPI_MISO", "SPI_MISO"),
+        ]
+        serial_params = [("ConfigInterface", '"SPI"')]
+    else:
+        serial_ports = [("Rx", "Rx")]
+        serial_params = []
     writer.addNewLine()
     writer.addInstantiation(
         compName="eFPGA_Config",
@@ -237,7 +263,7 @@ def generateTopWrapper(writer: CodeGenerator, fabric: Fabric) -> None:
         portsPairs=[
             ("CLK", "CLK"),
             ("resetn", "resetn"),
-            ("Rx", "Rx"),
+            *serial_ports,
             ("ComActive", "ComActive"),
             ("ReceiveLED", "ReceiveLED"),
             ("s_clk", "s_clk"),
@@ -255,6 +281,7 @@ def generateTopWrapper(writer: CodeGenerator, fabric: Fabric) -> None:
             ("NumberOfRows", "NumberOfRows"),
             ("desync_flag", "desync_flag"),
             ("FrameBitsPerRow", "FrameBitsPerRow"),
+            *serial_params,
         ],
     )
     writer.addNewLine()

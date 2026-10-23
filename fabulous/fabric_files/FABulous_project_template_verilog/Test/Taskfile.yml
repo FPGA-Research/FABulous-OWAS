@@ -27,6 +27,10 @@ vars:
   BITSTREAM_BIN: '{{.BITSTREAM_BIN | default "{{.BUILD_DIR}}/{{.DESIGN}}.bin"}}'
   FABRIC_FILES_DIR: "{{.BUILD_DIR}}/fabric_files"
   XSIM_SNAPSHOT: '{{.XSIM_SNAPSHOT | default (printf "%s_xsim" .DESIGN)}}'
+  # Non-empty when fabric.csv selects the SPI configuration port; the
+  # testbenches then connect SPI_* instead of Rx (CONFIG_SPI define).
+  CONFIG_SPI:
+    sh: grep -qE '^[[:space:]]*ConfigInterface[[:space:]]*,[[:space:]]*SPI[[:space:]]*(,|#|$)' {{.FAB_PROJ_ROOT}}/fabric.csv && echo 1 || true
 
 tasks:
   fab-sim:
@@ -36,6 +40,18 @@ tasks:
       - task: build-demo-fabric
       - task: build-test-design
       - task: run-simulation
+      - task: clean
+
+  fab-sim-spi:
+    desc: Like fab-sim, but load the bitstream over the SPI configuration port
+    preconditions:
+      - sh: test -n "{{.CONFIG_SPI}}"
+        msg: "fab-sim-spi needs ConfigInterface,SPI in {{.FAB_PROJ_ROOT}}/fabric.csv."
+    cmds:
+      - task: build-demo-fabric
+      - task: build-test-design
+      # Re-enter Task so TESTBENCH reaches the nested simulation tasks.
+      - '{{.TASK_EXE}} run-simulation TESTBENCH={{.DESIGN}}_spi_tb'
       - task: clean
 
   full-sim:
@@ -143,6 +159,7 @@ tasks:
     cmds:
       - >-
         iverilog -g2012
+        {{if .CONFIG_SPI}}-DCONFIG_SPI{{end}}
         {{.EXTRA_IVERILOG_FLAGS}}
         -s {{.TESTBENCH}}
         -o {{.BUILD_DIR}}/{{.DESIGN}}.vvp
@@ -163,7 +180,7 @@ tasks:
       - rm -rf xsim.dir
       # Never add -sv here: analysing the fabric as Verilog-2005 is the point.
       - xvlog --nolog {{.EXTRA_XVLOG_FLAGS}} {{.FABRIC_FILES_DIR}}/*.v {{.USER_DESIGN_DIR}}/{{.DESIGN}}.v
-      - xvlog --nolog -sv {{.EXTRA_XVLOG_FLAGS}} {{.TESTBENCH}}.v
+      - xvlog --nolog -sv {{if .CONFIG_SPI}}-d CONFIG_SPI{{end}} {{.EXTRA_XVLOG_FLAGS}} {{.TESTBENCH}}.v
       # xsim rejects a design where only some modules carry a `timescale.
       - xelab --nolog -timescale 1ps/1ps {{.EXTRA_XELAB_FLAGS}} -s {{.XSIM_SNAPSHOT}} {{.TESTBENCH}}
       - >-
@@ -213,6 +230,7 @@ tasks:
       - echo '+timescale+1ns/1ps' > {{.BUILD_DIR}}/gl_timescale.f
       - >-
         iverilog -g2012 -gspecify -DGL_SIM -f {{.BUILD_DIR}}/gl_timescale.f
+        {{if .CONFIG_SPI}}-DCONFIG_SPI{{end}}
         {{.EXTRA_IVERILOG_FLAGS}}
         -s {{.TESTBENCH}}
         -o {{.BUILD_DIR}}/{{.DESIGN}}_gl.vvp
@@ -231,6 +249,7 @@ tasks:
     cmds:
       - >-
         iverilog -g2012 -D EMULATION
+        {{if .CONFIG_SPI}}-DCONFIG_SPI{{end}}
         {{.EXTRA_IVERILOG_FLAGS}}
         -s {{.TESTBENCH}}
         -o {{.BUILD_DIR}}/{{.DESIGN}}.vvp

@@ -27,6 +27,18 @@ Other useful make targets are:
 
 Take a look into the Makefile to build your own flow.
 
+## SPI configuration port
+
+With `ConfigInterface,SPI` in `fabric.csv`, the fabric is configured over SPI
+(`SPI_SCLK`, `SPI_CS_N`, `SPI_MOSI`, `SPI_MISO`) instead of the UART `Rx`.
+The Taskfile and the Makefile detect the setting and compile the testbenches
+with `-DCONFIG_SPI`, so `sequential_16bit_en_tb` connects the SPI ports (held
+idle) and still loads the bitstream through the parallel port.
+
+`task fab-sim-spi` runs the full cycle with `sequential_16bit_en_spi_tb`
+instead, which sends the bitstream over SPI (mode 1, MSB first, whole 32 bit
+words). It refuses to run when `fabric.csv` selects the UART.
+
 ## Simulating with Vivado xsim
 
 `task run-simulation SIMULATOR=xvlog` runs the same testbench under AMD

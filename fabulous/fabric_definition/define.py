@@ -136,6 +136,18 @@ class MultiplexerStyle(Enum):
     GENERIC = "GENERIC"
 
 
+class ConfigInterface(StrEnum):
+    """Serial configuration interface of the generated top wrapper.
+
+    - UART: the `Rx` port feeding `config_UART` (default).
+    - SPI:  the `SPI_SCLK`, `SPI_CS_N`, `SPI_MOSI` and `SPI_MISO` ports; the
+            project's `eFPGA_Config` must provide them. Verilog only.
+    """
+
+    UART = "UART"
+    SPI = "SPI"
+
+
 class ConfigBitMode(Enum):
     """Enumeration for configuration bit access modes.
 

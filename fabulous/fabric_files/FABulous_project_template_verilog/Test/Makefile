@@ -5,6 +5,8 @@ YOSYS?=$(or $(FAB_YOSYS_PATH),yosys)
 NEXTPNR?=$(or $(FAB_NEXTPNR_PATH),nextpnr-generic)
 DESIGN=sequential_16bit_en
 TESTBENCH=${DESIGN}_tb
+# -DCONFIG_SPI when fabric.csv selects the SPI configuration port
+CONFIG_DEFINES=$(if $(shell grep -E '^[[:space:]]*ConfigInterface[[:space:]]*,[[:space:]]*SPI[[:space:]]*(,|\#|$$)' ../fabric.csv),-DCONFIG_SPI)
 TOP_WRAPPER=top_wrapper
 
 FABRIC_FILES_DIR=${BUILD_DIR}/fabric_files
@@ -69,11 +71,11 @@ mkdir_build:
 	mkdir -p ${FABRIC_FILES_DIR}
 
 run_simulation:
-	iverilog -g2012 -s ${TESTBENCH} -o ${BUILD_DIR}/${DESIGN}.vvp ${FABRIC_FILES_DIR}/* ${USER_DESIGN_VERILOG} ${TESTBENCH}.v
+	iverilog -g2012 ${CONFIG_DEFINES} -s ${TESTBENCH} -o ${BUILD_DIR}/${DESIGN}.vvp ${FABRIC_FILES_DIR}/* ${USER_DESIGN_VERILOG} ${TESTBENCH}.v
 	vvp ${BUILD_DIR}/${DESIGN}.vvp ${VVP_ARGS}
 
 run_emulation:
-	iverilog -g2012 -D EMULATION -s ${TESTBENCH} -o ${BUILD_DIR}/${DESIGN}.vvp ${BUILD_DIR}/${DESIGN}.vh ${FABRIC_FILES_DIR}/* ${USER_DESIGN_VERILOG} ${TESTBENCH}.v
+	iverilog -g2012 ${CONFIG_DEFINES} -D EMULATION -s ${TESTBENCH} -o ${BUILD_DIR}/${DESIGN}.vvp ${BUILD_DIR}/${DESIGN}.vh ${FABRIC_FILES_DIR}/* ${USER_DESIGN_VERILOG} ${TESTBENCH}.v
 	vvp ${BUILD_DIR}/${DESIGN}.vvp ${VVP_ARGS}
 
 run_GTKWave:

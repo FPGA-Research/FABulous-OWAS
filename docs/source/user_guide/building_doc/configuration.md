@@ -1,7 +1,7 @@
 (fabric-configuration)=
 # Fabric configuration
 
-FABulous fabrics offer a 32-bit wide configuration port which can either be driven directly by e.g. a CPU or bus or by the two currently implemented configuration adapters, allowing the transmission over UART and a custom bitbang protocol.
+FABulous fabrics offer a 32-bit wide configuration port which can either be driven directly by e.g. a CPU or bus or by the configuration adapters, allowing the transmission over UART or SPI and a custom bitbang protocol.
 
 ## Parallel Port
 
@@ -14,7 +14,7 @@ parallel port, rather than shifted in bit-serially. This is the main configurati
 
 ## Configuration Adapters
 
-To allow configuration from outside of a chip, currently two configuration adapters are implemented, allowing to upload a bitstream using a UART or a custom bitstream protocol.
+To allow configuration from outside of a chip, a serial adapter (UART or SPI, selected by the `ConfigInterface` fabric parameter) and a bitbang adapter are implemented. The serial adapter has priority over bitbang, bitbang over the parallel port.
 
 ###  UART
 
@@ -37,6 +37,21 @@ decoded, and assembled into 32-bit words that feed the configuration port.
   validated against an expected checksum value
 - **Timeout:** an inactivity timeout resets the receiver to idle if no data
   arrives mid-transfer
+
+### SPI
+
+With `ConfigInterface,SPI` in `fabric.csv`, `fabric_spi_receiver` replaces the UART. It is a plain SPI receiver: no header, command or checksum, the bitstream file is sent as it is.
+
+- **Signals:** `SPI_SCLK`, `SPI_CS_N` (active low), `SPI_MOSI`, `SPI_MISO` (always `0`), `ComActive` (high while `SPI_CS_N` is asserted), `ReceiveLED`
+- **Mode:** SPI mode 1 (CPOL 0, CPHA 1): MOSI changes on the rising SCLK edge and is sampled on the falling edge, MSB first
+- **Clock:** SCLK, CS and MOSI are synchronised to `CLK`, so SCLK must stay well below `CLK`; a half period of two `CLK` cycles works in simulation
+- **Word assembly:** every 32 bits form one word, written to the configuration port in the byte order of the bitstream file
+- **Alignment:** the bit counter is only cleared by `resetn`, not by `SPI_CS_N`; always send whole 32-bit words
+- **Resync:** asserting `SPI_CS_N` restarts the search for the `0xFAB0FAB1` sync word, like `ComActive` of the UART
+
+:::{note}
+The selection is written into the generated `eFPGA_top.v` as a fixed `ConfigInterface` value on the `eFPGA_Config` instance, not as a parameter of `eFPGA_top`, so any flow that synthesises `eFPGA_top` picks it up automatically. Always synthesise the configuration logic through `eFPGA_top`: synthesising `eFPGA_Config` on its own (as its own top or macro) ignores the selection and silently builds the `UART` default.
+:::
 
 ### Bitbang
 
