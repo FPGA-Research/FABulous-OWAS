@@ -91,6 +91,15 @@ Run this complete example from this repository's root. It uses 12 mapping worker
 a 300-second selection budget, LUT4 source synthesis and a reported capacity of
 1,152 FLUTs. Equivalence checking is enabled by default.
 
+Choose the mapping preset with `--mode`:
+
+- `default`: prioritize coverage, then instance count (the default).
+- `timing_0`: prioritize coverage, then combinational depth before instance count.
+  This can use more FLUTs to reduce mapped logic levels. The depth stage shares
+  the selection budget and reports its progress in the terminal.
+
+The preset is recorded in mapping `settings.json` and `summary.rpt`.
+
 Routing defaults to timing-driven SA/Router2 with **8 threads** and a **1 MHz**
 clock target. Set `--freq` in MHz to change the target, for example `--freq 10`.
 Routing can succeed without usable fabric timing information, but then nextpnr
@@ -114,6 +123,7 @@ task fab_mapper -- \
   --merge-top-wrapper "$NPU_RTL/fabulous_top_wrapper.v" \
   --workers 12 \
   --selection-seconds 300 \
+  --mode default \
   --source-lut-size 4 \
   --capacity 1152 \
   --freq 1 \
@@ -129,6 +139,9 @@ succeed. The specification comes from the same fabric used for routing, and the
 binary lands at **`$RESULTS/routing/design.bin`**. Use
 `task fab_mapper -- --help` for all mapper options.
 
+To prioritize depth, replace `--mode default` with `--mode timing_0` in the
+command above. Set `--freq` independently to your routing clock target.
+
 Each run creates:
 
 ```text
@@ -141,6 +154,10 @@ demo_CrocoScale_OWAS/npu_runs/npu_<timestamp>/
     ├── commands.log
     └── summary.rpt
 ```
+
+The terminal and `routing/summary.rpt` report final Fmax per clock, for example
+`Fmax [clk_i]: 7.97 MHz (target 1.00 MHz: PASS)`. Without usable timing data or
+timed register-to-register paths, they report `Fmax: N/A`.
 
 ## Regenerate a bitstream from an existing run
 
