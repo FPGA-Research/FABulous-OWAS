@@ -28,6 +28,23 @@ git submodule update --init --remote --recursive
 
 ## Set up the environment
 
+> [!IMPORTANT]
+> The `fabulous-bit-gen` dependency comes from the private
+> `FPGA-Research/FABulous-bit-gen-OWAS` repository (you need read access to it)
+> and is pinned by its HTTPS URL. Without credentials for it, `uv sync` fails with `could not read Username
+> for 'https://github.com'`.
+>
+> Skip this step if you access GitHub over HTTPS with `gh auth setup-git` or a
+> token. The rewrite would switch that repository to SSH and break fetching it
+> without an SSH key. Otherwise, run this once per machine so git fetches that
+> repository over SSH:
+>
+> ```bash
+> git config --global \
+>   url."git@github.com:FPGA-Research/FABulous-bit-gen-OWAS".insteadOf \
+>   "https://github.com/FPGA-Research/FABulous-bit-gen-OWAS"
+> ```
+
 Install `uv`, then run from this repository's root:
 
 ```bash
@@ -40,23 +57,19 @@ required: `task fab_mapper` runs it through `uvx` in a separate cached environme
 and checks for upstream updates. Push mapper changes to GitHub before running
 this task to use them.
 
-Use the [hausdinge/nextpnr fork](https://github.com/hausdinge/nextpnr) for routing.
-It fixes the FABulous constant-driver pin directions that can cause Router2 to
-fail. Build `nextpnr-generic` alongside this repository using system build tools,
-outside the OSS CAD Suite environment. The build needs CMake, Ninja, a C++17
-compiler, Boost, Eigen3 and Python development headers.
+Routing needs upstream [nextpnr](https://github.com/YosysHQ/nextpnr): its fix for
+the FABulous constant-driver pin directions, which can cause Router2 to fail, is
+not in a release yet. Inside `nix develop`, `nextpnr-generic` is already on `PATH`.
+Otherwise, build it in this repository using system build tools, outside the OSS
+CAD Suite environment. The build needs CMake, Ninja, a C++17 compiler, Boost,
+Eigen3 and Python development headers.
 
 ```bash
-git clone https://github.com/hausdinge/nextpnr.git ../nextpnr
-cmake -S ../nextpnr -B ../nextpnr/build -G Ninja \
-  -DARCH=generic \
-  -DCMAKE_BUILD_TYPE=Release \
-  -DBUILD_GUI=OFF \
-  -DPython3_EXECUTABLE=/usr/bin/python3
-cmake --build ../nextpnr/build --target nextpnr-generic --parallel 12
+task nextpnr
 ```
 
-The example below uses this executable directly; no system installation is needed.
+This clones and builds `nextpnr/build/nextpnr-generic`. The example below uses
+this executable directly; no system installation is needed.
 
 ## Map, route and generate the NPU bitstream
 
@@ -104,7 +117,7 @@ task fab_mapper -- \
   --source-lut-size 4 \
   --capacity 1152 \
   --freq 1 \
-  --nextpnr-executable ../nextpnr/build/nextpnr-generic \
+  --nextpnr-executable nextpnr/build/nextpnr-generic \
 && task bitstream \
   FASM="$RESULTS/routing/design.fasm" \
   BITSTREAM_SPEC="$FABRIC/.FABulous/bitStreamSpec.bin" \
