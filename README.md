@@ -91,6 +91,11 @@ Run this complete example from this repository's root. It uses 12 mapping worker
 a 300-second selection budget, LUT4 source synthesis and a reported capacity of
 1,152 FLUTs. Equivalence checking is enabled by default.
 
+Routing defaults to timing-driven SA/Router2 with **8 threads** and a **1 MHz**
+clock target. Set `--freq` in MHz to change the target, for example `--freq 10`.
+Routing can succeed without usable fabric timing information, but then nextpnr
+cannot verify that the clock target is met.
+
 ```bash
 source .venv/bin/activate
 
@@ -111,6 +116,7 @@ task fab_mapper -- \
   --selection-seconds 300 \
   --source-lut-size 4 \
   --capacity 1152 \
+  --freq 1 \
   --nextpnr-executable nextpnr/build/nextpnr-generic \
 && task bitstream \
   FASM="$RESULTS/routing/design.fasm" \
