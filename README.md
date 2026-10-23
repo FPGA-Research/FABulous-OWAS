@@ -57,6 +57,10 @@ required: `task fab_mapper` runs it through `uvx` in a separate cached environme
 and checks for upstream updates. Push mapper changes to GitHub before running
 this task to use them.
 
+Inside `nix develop`, FAB-mapper is also on `PATH` as `sat-fab-flut5`, pinned by
+`flake.lock` and wired to the flake's nextpnr; it takes the same arguments as
+`task fab_mapper --`. Advance it with `nix flake update fab-mapper-src`.
+
 Routing needs upstream [nextpnr](https://github.com/YosysHQ/nextpnr): its fix for
 the FABulous constant-driver pin directions, which can cause Router2 to fail, is
 not in a release yet. Inside `nix develop`, `nextpnr-generic` is already on `PATH`.

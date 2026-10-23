@@ -57,6 +57,12 @@
       url = "github:FPGA-Research/FABulator/beccd4e4c58b9fc92fafaf082883c20367dbe5ba";
       flake = false;
     };
+    # Private repository: locking and building need SSH access to it.
+    # `nix flake update fab-mapper-src` advances the pin.
+    fab-mapper-src = {
+      url = "git+ssh://git@github.com/FPGA-Research/FAB-mapper.git";
+      flake = false;
+    };
   };
 
   nixConfig = {
@@ -80,6 +86,7 @@
       ghdl-yosys-plugin-src,
       nextpnr-src,
       fabulator-src,
+      fab-mapper-src,
       pyproject-nix,
       uv2nix,
       pyproject-build-systems,
@@ -148,6 +155,18 @@
               fabulator = fabulator-src;
             };
           };
+          fab-mapper = import ./nix/fab-mapper.nix {
+            inherit
+              lib
+              pyproject-nix
+              uv2nix
+              pyproject-build-systems
+              ;
+            pkgs = nixpkgs.legacyPackages.${system};
+            python = nixpkgs.legacyPackages.${system}.python3;
+            src = fab-mapper-src;
+            nextpnr = customPkgs.nextpnr;
+          };
           librelane-pkg = pkgs.python3.pkgs.librelane;
           tkinter-pkg = nixpkgs.legacyPackages.${system}.python3Packages.tkinter;
           tkinter-python-path = "${tkinter-pkg}/${nixpkgs.legacyPackages.${system}.python3.sitePackages}";
@@ -166,6 +185,7 @@
             pkgs.gtkwave
             customPkgs.yosys
             customPkgs.nextpnr
+            fab-mapper
             customPkgs.fabulator
             customPkgs.ghdl
             pkgs.nvc
@@ -176,6 +196,7 @@
           inherit
             pkgs
             customPkgs
+            fab-mapper
             librelane-pkg
             tkinter-python-path
             toolPackages
@@ -210,6 +231,8 @@
         {
           default = fabulousApp;
           fabulous = fabulousApp;
+          fab-mapper = tc.fab-mapper;
+          nextpnr = tc.customPkgs.nextpnr;
         }
       );
       devShells = forAllSystems (

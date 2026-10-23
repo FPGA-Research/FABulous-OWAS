@@ -44,6 +44,22 @@
         "type": "github"
       }
     },
+    "fab-mapper-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1792524310,
+        "narHash": "sha256-xrQGlxSxMIGrvZuQfrp3Gd9AVGJEY4fTLnXRv+dgQ/w=",
+        "ref": "refs/heads/main",
+        "rev": "3d9936b946212cc3dc5214f8ced880cb16a889ce",
+        "revCount": 65,
+        "type": "git",
+        "url": "ssh://git@github.com/FPGA-Research/FAB-mapper.git"
+      },
+      "original": {
+        "type": "git",
+        "url": "ssh://git@github.com/FPGA-Research/FAB-mapper.git"
+      }
+    },
     "fabulator-src": {
       "flake": false,
       "locked": {
@@ -145,11 +161,11 @@
     "nextpnr-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1790925088,
-        "narHash": "sha256-6cSQhO/Uuml9e1WP3IMDzwIwDhp7G3qqQmlemupzwCQ=",
+        "lastModified": 1792664490,
+        "narHash": "sha256-QiTZLbf38HueeYRU14NgSGbRK+k1B9V527otnBH1Ua0=",
         "owner": "YosysHQ",
         "repo": "nextpnr",
-        "rev": "e2fe86b3ce6feaa3f09d8db5c0971c1cda3fc641",
+        "rev": "42fc4d5bc608120f601df83666a9507557414346",
         "type": "github"
       },
       "original": {
@@ -241,6 +257,7 @@
     },
     "root": {
       "inputs": {
+        "fab-mapper-src": "fab-mapper-src",
         "fabulator-src": "fabulator-src",
         "ghdl-bin-aarch64-darwin": "ghdl-bin-aarch64-darwin",
         "ghdl-bin-x86_64-linux": "ghdl-bin-x86_64-linux",
