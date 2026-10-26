@@ -41,6 +41,22 @@ in
       };
   });
 
+  # The private git source builds with setuptools and takes its version from
+  # git tags via setuptools_scm; the Nix build tree has no .git, so stamp the
+  # version uv.lock records.
+  fabulous-bit-gen = prev.fabulous-bit-gen.overrideAttrs (old: {
+    nativeBuildInputs =
+      (old.nativeBuildInputs or [ ])
+      ++ final.resolveBuildSystem {
+        setuptools = [ ];
+        setuptools-scm = [ ];
+        wheel = [ ];
+      };
+    env = (old.env or { }) // {
+      SETUPTOOLS_SCM_PRETEND_VERSION = old.version;
+    };
+  });
+
   # Fix file collision between alive-progress and about-time (both provide LICENSE files)
   alive-progress = prev.alive-progress.overrideAttrs (old: {
     postInstall = (old.postInstall or "") + ''
