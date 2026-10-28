@@ -39,6 +39,7 @@ pkgs.mkShell {
 
   FAB_YOSYS_PATH = envVars.FAB_YOSYS_PATH;
   GHDL_PREFIX = envVars.GHDL_PREFIX;
+  FAB_PDK_HASH = envVars.FAB_PDK_HASH;
   PYTHONWARNINGS = envVars.PYTHONWARNINGS;
 
   shellHook = ''

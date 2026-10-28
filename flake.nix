@@ -4,7 +4,7 @@
 
   inputs = {
     # Same librelane dev rev as the uv source in pyproject.toml.
-    librelane.url = "github:librelane/librelane/dcea37e640e792186684004142e51a81a0a554de";
+    librelane.url = "github:librelane/librelane/aaf7a938766e0708ca894776d81e2c2cfb12b7e7";
 
     # Follow librelane's nix-eda and nixpkgs for binary cache hits
     nix-eda.follows = "librelane/nix-eda";
@@ -184,6 +184,9 @@
           envVars = {
             # Tells FABulous the nix yosys binary is named fab-yosys.
             FAB_YOSYS_PATH = "fab-yosys";
+            # PDK version for ihp-sg13 (= PDK_HASH in MLFPGA_engine versions.env). Overrides the
+            # hash this LibreLane rev recommends (22f4335) and any .env value; FABulous only warns.
+            FAB_PDK_HASH = "89d42ee6d2fd9b50b86a1aada6fee6673c3e6008";
             # libghdl, dlopen'd by the yosys ghdl plugin, can't derive its own
             # install prefix (only the ghdl binary can), so it needs this to
             # find the IEEE libraries.

@@ -46,6 +46,10 @@ let
         value = envVars.GHDL_PREFIX;
       }
       {
+        name = "FAB_PDK_HASH";
+        value = envVars.FAB_PDK_HASH;
+      }
+      {
         # tkinter only. librelane is deliberately absent so the venv's
         # (uv.lock-pinned) librelane is authoritative and overridable, not
         # shadowed by the flake input.
@@ -147,6 +151,7 @@ in
 
         export FAB_YOSYS_PATH="${envVars.FAB_YOSYS_PATH}"
         export GHDL_PREFIX="${envVars.GHDL_PREFIX}"
+        export FAB_PDK_HASH="${envVars.FAB_PDK_HASH}"
 
         export REPO_ROOT=$(git rev-parse --show-toplevel 2>/dev/null || echo "")
         . ${virtualenv}/bin/activate
