@@ -14,12 +14,12 @@ module NPU_ACCUM_S_2
         output  [7:0] N2BEGb,        //TilePort({N} OUTPUT N2BEGb[7:0])
         output  [15:0] N4BEG,        //TilePort({N} OUTPUT N4BEG[3:0])
         output  [15:0] NN4BEG,        //TilePort({N} OUTPUT NN4BEG[3:0])
-        output  [0:0] Co,        //TilePort({N} OUTPUT Co[0:0])
         input  [3:0] S1END,        //TilePort({N} INPUT S1END[3:0])
         input  [7:0] S2MID,        //TilePort({N} INPUT S2MID[7:0])
         input  [7:0] S2END,        //TilePort({N} INPUT S2END[7:0])
         input  [15:0] S4END,        //TilePort({N} INPUT S4END[3:0])
         input  [15:0] SS4END,        //TilePort({N} INPUT SS4END[3:0])
+        output  [0:0] Co,        //TilePort({N} OUTPUT Co[0:0])
     //SJUMP ports (supertile BEL interface)
         output  [8-1:0] BASE_TO_TOP,
         input  [8-1:0] TOP_TO_BASE,
