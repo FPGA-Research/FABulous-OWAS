@@ -1,0 +1,1092 @@
+{
+  "creator": "Yosys 0.68 (git sha1 38e001a6ff74ca434bf4cc02c053f53619160ab0, Release, Clang /nix/store/874j5xydsj6nr6i1zdrjvhln5gmxvvrr-clang-wrapper-21.1.8/bin/clang++ 21.1.8)",
+  "modules": {
+    "AXI_M_BEL": {
+      "attributes": {
+        "TIE_OFF_ARCACHE": 11,
+        "TIE_OFF_ARLOCK": 10,
+        "TIE_OFF_ARBURST": 9,
+        "TIE_OFF_ARSIZE": 8,
+        "TIE_OFF_ARLEN": 7,
+        "TIE_OFF_WLAST": 6,
+        "TIE_OFF_WSTRB": 5,
+        "TIE_OFF_AWCACHE": 4,
+        "TIE_OFF_AWLOCK": 3,
+        "TIE_OFF_AWBURST": 2,
+        "TIE_OFF_AWSIZE": 1,
+        "TIE_OFF_AWLEN": 0,
+        "BelMap": 1,
+        "FABulous": 1,
+        "dynports": 1,
+        "top": 1,
+        "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:17.1-139.10"
+      },
+      "parameter_default_values": {
+        "NoConfigBits": 12
+      },
+      "ports": {
+        "SOC_AWADDR": {
+          "direction": "output",
+          "bits": [ 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33 ]
+        },
+        "SOC_AWLEN": {
+          "direction": "output",
+          "bits": [ 34, 35, 36, 37, 38, 39, 40, 41 ]
+        },
+        "SOC_AWSIZE": {
+          "direction": "output",
+          "bits": [ 42, 43, 44 ]
+        },
+        "SOC_AWBURST": {
+          "direction": "output",
+          "bits": [ 45, 46 ]
+        },
+        "SOC_AWLOCK": {
+          "direction": "output",
+          "bits": [ 47 ]
+        },
+        "SOC_AWCACHE": {
+          "direction": "output",
+          "bits": [ 48, 49, 50, 51 ]
+        },
+        "SOC_AWVALID": {
+          "direction": "output",
+          "bits": [ 52 ]
+        },
+        "SOC_AWREADY": {
+          "direction": "input",
+          "bits": [ 53 ]
+        },
+        "SOC_WDATA": {
+          "direction": "output",
+          "bits": [ 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85 ]
+        },
+        "SOC_WSTRB": {
+          "direction": "output",
+          "bits": [ 86, 87, 88, 89 ]
+        },
+        "SOC_WLAST": {
+          "direction": "output",
+          "bits": [ 90 ]
+        },
+        "SOC_WVALID": {
+          "direction": "output",
+          "bits": [ 91 ]
+        },
+        "SOC_WREADY": {
+          "direction": "input",
+          "bits": [ 92 ]
+        },
+        "SOC_BRESP": {
+          "direction": "input",
+          "bits": [ 93, 94 ]
+        },
+        "SOC_BVALID": {
+          "direction": "input",
+          "bits": [ 95 ]
+        },
+        "SOC_BREADY": {
+          "direction": "output",
+          "bits": [ 96 ]
+        },
+        "SOC_ARADDR": {
+          "direction": "output",
+          "bits": [ 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128 ]
+        },
+        "SOC_ARLEN": {
+          "direction": "output",
+          "bits": [ 129, 130, 131, 132, 133, 134, 135, 136 ]
+        },
+        "SOC_ARSIZE": {
+          "direction": "output",
+          "bits": [ 137, 138, 139 ]
+        },
+        "SOC_ARBURST": {
+          "direction": "output",
+          "bits": [ 140, 141 ]
+        },
+        "SOC_ARLOCK": {
+          "direction": "output",
+          "bits": [ 142 ]
+        },
+        "SOC_ARCACHE": {
+          "direction": "output",
+          "bits": [ 143, 144, 145, 146 ]
+        },
+        "SOC_ARVALID": {
+          "direction": "output",
+          "bits": [ 147 ]
+        },
+        "SOC_ARREADY": {
+          "direction": "input",
+          "bits": [ 148 ]
+        },
+        "SOC_RDATA": {
+          "direction": "input",
+          "bits": [ 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180 ]
+        },
+        "SOC_RRESP": {
+          "direction": "input",
+          "bits": [ 181, 182 ]
+        },
+        "SOC_RLAST": {
+          "direction": "input",
+          "bits": [ 183 ]
+        },
+        "SOC_RVALID": {
+          "direction": "input",
+          "bits": [ 184 ]
+        },
+        "SOC_RREADY": {
+          "direction": "output",
+          "bits": [ 185 ]
+        },
+        "FAB_AWADDR": {
+          "direction": "input",
+          "bits": [ 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33 ]
+        },
+        "FAB_AWLEN": {
+          "direction": "input",
+          "bits": [ 186, 187, 188, 189, 190, 191, 192, 193 ]
+        },
+        "FAB_AWSIZE": {
+          "direction": "input",
+          "bits": [ 194, 195, 196 ]
+        },
+        "FAB_AWBURST": {
+          "direction": "input",
+          "bits": [ 197, 198 ]
+        },
+        "FAB_AWLOCK": {
+          "direction": "input",
+          "bits": [ 199 ]
+        },
+        "FAB_AWCACHE": {
+          "direction": "input",
+          "bits": [ 200, 201, 202, 203 ]
+        },
+        "FAB_AWVALID": {
+          "direction": "input",
+          "bits": [ 52 ]
+        },
+        "FAB_AWREADY": {
+          "direction": "output",
+          "bits": [ 53 ]
+        },
+        "FAB_WDATA": {
+          "direction": "input",
+          "bits": [ 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85 ]
+        },
+        "FAB_WSTRB": {
+          "direction": "input",
+          "bits": [ 204, 205, 206, 207 ]
+        },
+        "FAB_WLAST": {
+          "direction": "input",
+          "bits": [ 208 ]
+        },
+        "FAB_WVALID": {
+          "direction": "input",
+          "bits": [ 91 ]
+        },
+        "FAB_WREADY": {
+          "direction": "output",
+          "bits": [ 92 ]
+        },
+        "FAB_BRESP": {
+          "direction": "output",
+          "bits": [ 93, 94 ]
+        },
+        "FAB_BVALID": {
+          "direction": "output",
+          "bits": [ 95 ]
+        },
+        "FAB_BREADY": {
+          "direction": "input",
+          "bits": [ 96 ]
+        },
+        "FAB_ARADDR": {
+          "direction": "input",
+          "bits": [ 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128 ]
+        },
+        "FAB_ARLEN": {
+          "direction": "input",
+          "bits": [ 209, 210, 211, 212, 213, 214, 215, 216 ]
+        },
+        "FAB_ARSIZE": {
+          "direction": "input",
+          "bits": [ 217, 218, 219 ]
+        },
+        "FAB_ARBURST": {
+          "direction": "input",
+          "bits": [ 220, 221 ]
+        },
+        "FAB_ARLOCK": {
+          "direction": "input",
+          "bits": [ 222 ]
+        },
+        "FAB_ARCACHE": {
+          "direction": "input",
+          "bits": [ 223, 224, 225, 226 ]
+        },
+        "FAB_ARVALID": {
+          "direction": "input",
+          "bits": [ 147 ]
+        },
+        "FAB_ARREADY": {
+          "direction": "output",
+          "bits": [ 148 ]
+        },
+        "FAB_RDATA": {
+          "direction": "output",
+          "bits": [ 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180 ]
+        },
+        "FAB_RRESP": {
+          "direction": "output",
+          "bits": [ 181, 182 ]
+        },
+        "FAB_RLAST": {
+          "direction": "output",
+          "bits": [ 183 ]
+        },
+        "FAB_RVALID": {
+          "direction": "output",
+          "bits": [ 184 ]
+        },
+        "FAB_RREADY": {
+          "direction": "input",
+          "bits": [ 185 ]
+        },
+        "ConfigBits": {
+          "direction": "input",
+          "bits": [ 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238 ]
+        }
+      },
+      "cells": {
+        "$ternary$/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:102$1": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": 8
+          },
+          "attributes": {
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:102.26-102.58"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 186, 187, 188, 189, 190, 191, 192, 193 ],
+            "B": [ "0", "0", "0", "0", "0", "0", "0", "0" ],
+            "S": [ 227 ],
+            "Y": [ 34, 35, 36, 37, 38, 39, 40, 41 ]
+          }
+        },
+        "$ternary$/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:103$2": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": 3
+          },
+          "attributes": {
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:103.26-103.61"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 194, 195, 196 ],
+            "B": [ "0", "1", "0" ],
+            "S": [ 228 ],
+            "Y": [ 42, 43, 44 ]
+          }
+        },
+        "$ternary$/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:104$3": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": 2
+          },
+          "attributes": {
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:104.26-104.61"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 197, 198 ],
+            "B": [ "1", "0" ],
+            "S": [ 229 ],
+            "Y": [ 45, 46 ]
+          }
+        },
+        "$ternary$/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:105$4": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": 1
+          },
+          "attributes": {
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:105.26-105.59"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 199 ],
+            "B": [ "0" ],
+            "S": [ 230 ],
+            "Y": [ 47 ]
+          }
+        },
+        "$ternary$/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:106$5": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": 4
+          },
+          "attributes": {
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:106.26-106.63"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 200, 201, 202, 203 ],
+            "B": [ "1", "1", "0", "0" ],
+            "S": [ 231 ],
+            "Y": [ 48, 49, 50, 51 ]
+          }
+        },
+        "$ternary$/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:110$6": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": 4
+          },
+          "attributes": {
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:110.26-110.61"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 204, 205, 206, 207 ],
+            "B": [ "1", "1", "1", "1" ],
+            "S": [ 232 ],
+            "Y": [ 86, 87, 88, 89 ]
+          }
+        },
+        "$ternary$/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:111$7": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": 1
+          },
+          "attributes": {
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:111.26-111.58"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 208 ],
+            "B": [ "1" ],
+            "S": [ 233 ],
+            "Y": [ 90 ]
+          }
+        },
+        "$ternary$/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:117$8": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": 8
+          },
+          "attributes": {
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:117.26-117.58"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 209, 210, 211, 212, 213, 214, 215, 216 ],
+            "B": [ "0", "0", "0", "0", "0", "0", "0", "0" ],
+            "S": [ 234 ],
+            "Y": [ 129, 130, 131, 132, 133, 134, 135, 136 ]
+          }
+        },
+        "$ternary$/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:118$9": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": 3
+          },
+          "attributes": {
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:118.26-118.61"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 217, 218, 219 ],
+            "B": [ "0", "1", "0" ],
+            "S": [ 235 ],
+            "Y": [ 137, 138, 139 ]
+          }
+        },
+        "$ternary$/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:119$10": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": 2
+          },
+          "attributes": {
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:119.26-119.61"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 220, 221 ],
+            "B": [ "1", "0" ],
+            "S": [ 236 ],
+            "Y": [ 140, 141 ]
+          }
+        },
+        "$ternary$/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:120$11": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": 1
+          },
+          "attributes": {
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:120.26-120.60"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 222 ],
+            "B": [ "0" ],
+            "S": [ 237 ],
+            "Y": [ 142 ]
+          }
+        },
+        "$ternary$/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:121$12": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": 4
+          },
+          "attributes": {
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:121.26-121.64"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 223, 224, 225, 226 ],
+            "B": [ "1", "1", "0", "0" ],
+            "S": [ 238 ],
+            "Y": [ 143, 144, 145, 146 ]
+          }
+        }
+      },
+      "netnames": {
+        "$ternary$/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:102$1_Y": {
+          "hide_name": 1,
+          "bits": [ 34, 35, 36, 37, 38, 39, 40, 41 ],
+          "attributes": {
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:102.26-102.58"
+          }
+        },
+        "$ternary$/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:103$2_Y": {
+          "hide_name": 1,
+          "bits": [ 42, 43, 44 ],
+          "attributes": {
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:103.26-103.61"
+          }
+        },
+        "$ternary$/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:104$3_Y": {
+          "hide_name": 1,
+          "bits": [ 45, 46 ],
+          "attributes": {
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:104.26-104.61"
+          }
+        },
+        "$ternary$/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:105$4_Y": {
+          "hide_name": 1,
+          "bits": [ 47 ],
+          "attributes": {
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:105.26-105.59"
+          }
+        },
+        "$ternary$/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:106$5_Y": {
+          "hide_name": 1,
+          "bits": [ 48, 49, 50, 51 ],
+          "attributes": {
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:106.26-106.63"
+          }
+        },
+        "$ternary$/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:110$6_Y": {
+          "hide_name": 1,
+          "bits": [ 86, 87, 88, 89 ],
+          "attributes": {
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:110.26-110.61"
+          }
+        },
+        "$ternary$/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:111$7_Y": {
+          "hide_name": 1,
+          "bits": [ 90 ],
+          "attributes": {
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:111.26-111.58"
+          }
+        },
+        "$ternary$/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:117$8_Y": {
+          "hide_name": 1,
+          "bits": [ 129, 130, 131, 132, 133, 134, 135, 136 ],
+          "attributes": {
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:117.26-117.58"
+          }
+        },
+        "$ternary$/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:118$9_Y": {
+          "hide_name": 1,
+          "bits": [ 137, 138, 139 ],
+          "attributes": {
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:118.26-118.61"
+          }
+        },
+        "$ternary$/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:119$10_Y": {
+          "hide_name": 1,
+          "bits": [ 140, 141 ],
+          "attributes": {
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:119.26-119.61"
+          }
+        },
+        "$ternary$/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:120$11_Y": {
+          "hide_name": 1,
+          "bits": [ 142 ],
+          "attributes": {
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:120.26-120.60"
+          }
+        },
+        "$ternary$/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:121$12_Y": {
+          "hide_name": 1,
+          "bits": [ 143, 144, 145, 146 ],
+          "attributes": {
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:121.26-121.64"
+          }
+        },
+        "ConfigBits": {
+          "hide_name": 0,
+          "bits": [ 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238 ],
+          "attributes": {
+            "FABulous": 1,
+            "GLOBAL": 1,
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:95.58-95.68"
+          }
+        },
+        "FAB_ARADDR": {
+          "hide_name": 0,
+          "bits": [ 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128 ],
+          "attributes": {
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:79.24-79.34"
+          }
+        },
+        "FAB_ARBURST": {
+          "hide_name": 0,
+          "bits": [ 220, 221 ],
+          "attributes": {
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:82.24-82.35"
+          }
+        },
+        "FAB_ARCACHE": {
+          "hide_name": 0,
+          "bits": [ 223, 224, 225, 226 ],
+          "attributes": {
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:84.24-84.35"
+          }
+        },
+        "FAB_ARLEN": {
+          "hide_name": 0,
+          "bits": [ 209, 210, 211, 212, 213, 214, 215, 216 ],
+          "attributes": {
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:80.24-80.33"
+          }
+        },
+        "FAB_ARLOCK": {
+          "hide_name": 0,
+          "bits": [ 222 ],
+          "attributes": {
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:83.24-83.34"
+          }
+        },
+        "FAB_ARREADY": {
+          "hide_name": 0,
+          "bits": [ 148 ],
+          "attributes": {
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:86.24-86.35"
+          }
+        },
+        "FAB_ARSIZE": {
+          "hide_name": 0,
+          "bits": [ 217, 218, 219 ],
+          "attributes": {
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:81.24-81.34"
+          }
+        },
+        "FAB_ARVALID": {
+          "hide_name": 0,
+          "bits": [ 147 ],
+          "attributes": {
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:85.24-85.35"
+          }
+        },
+        "FAB_AWADDR": {
+          "hide_name": 0,
+          "bits": [ 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33 ],
+          "attributes": {
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:60.24-60.34"
+          }
+        },
+        "FAB_AWBURST": {
+          "hide_name": 0,
+          "bits": [ 197, 198 ],
+          "attributes": {
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:63.24-63.35"
+          }
+        },
+        "FAB_AWCACHE": {
+          "hide_name": 0,
+          "bits": [ 200, 201, 202, 203 ],
+          "attributes": {
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:65.24-65.35"
+          }
+        },
+        "FAB_AWLEN": {
+          "hide_name": 0,
+          "bits": [ 186, 187, 188, 189, 190, 191, 192, 193 ],
+          "attributes": {
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:61.24-61.33"
+          }
+        },
+        "FAB_AWLOCK": {
+          "hide_name": 0,
+          "bits": [ 199 ],
+          "attributes": {
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:64.24-64.34"
+          }
+        },
+        "FAB_AWREADY": {
+          "hide_name": 0,
+          "bits": [ 53 ],
+          "attributes": {
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:67.24-67.35"
+          }
+        },
+        "FAB_AWSIZE": {
+          "hide_name": 0,
+          "bits": [ 194, 195, 196 ],
+          "attributes": {
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:62.24-62.34"
+          }
+        },
+        "FAB_AWVALID": {
+          "hide_name": 0,
+          "bits": [ 52 ],
+          "attributes": {
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:66.24-66.35"
+          }
+        },
+        "FAB_BREADY": {
+          "hide_name": 0,
+          "bits": [ 96 ],
+          "attributes": {
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:77.24-77.34"
+          }
+        },
+        "FAB_BRESP": {
+          "hide_name": 0,
+          "bits": [ 93, 94 ],
+          "attributes": {
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:75.24-75.33"
+          }
+        },
+        "FAB_BVALID": {
+          "hide_name": 0,
+          "bits": [ 95 ],
+          "attributes": {
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:76.24-76.34"
+          }
+        },
+        "FAB_RDATA": {
+          "hide_name": 0,
+          "bits": [ 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180 ],
+          "attributes": {
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:88.24-88.33"
+          }
+        },
+        "FAB_RLAST": {
+          "hide_name": 0,
+          "bits": [ 183 ],
+          "attributes": {
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:90.24-90.33"
+          }
+        },
+        "FAB_RREADY": {
+          "hide_name": 0,
+          "bits": [ 185 ],
+          "attributes": {
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:92.24-92.34"
+          }
+        },
+        "FAB_RRESP": {
+          "hide_name": 0,
+          "bits": [ 181, 182 ],
+          "attributes": {
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:89.24-89.33"
+          }
+        },
+        "FAB_RVALID": {
+          "hide_name": 0,
+          "bits": [ 184 ],
+          "attributes": {
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:91.24-91.34"
+          }
+        },
+        "FAB_WDATA": {
+          "hide_name": 0,
+          "bits": [ 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85 ],
+          "attributes": {
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:69.24-69.33"
+          }
+        },
+        "FAB_WLAST": {
+          "hide_name": 0,
+          "bits": [ 208 ],
+          "attributes": {
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:71.24-71.33"
+          }
+        },
+        "FAB_WREADY": {
+          "hide_name": 0,
+          "bits": [ 92 ],
+          "attributes": {
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:73.24-73.34"
+          }
+        },
+        "FAB_WSTRB": {
+          "hide_name": 0,
+          "bits": [ 204, 205, 206, 207 ],
+          "attributes": {
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:70.24-70.33"
+          }
+        },
+        "FAB_WVALID": {
+          "hide_name": 0,
+          "bits": [ 91 ],
+          "attributes": {
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:72.24-72.34"
+          }
+        },
+        "SOC_ARADDR": {
+          "hide_name": 0,
+          "bits": [ 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128 ],
+          "attributes": {
+            "EXTERNAL": 1,
+            "FABulous": 1,
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:42.49-42.59"
+          }
+        },
+        "SOC_ARBURST": {
+          "hide_name": 0,
+          "bits": [ 140, 141 ],
+          "attributes": {
+            "EXTERNAL": 1,
+            "FABulous": 1,
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:45.49-45.60"
+          }
+        },
+        "SOC_ARCACHE": {
+          "hide_name": 0,
+          "bits": [ 143, 144, 145, 146 ],
+          "attributes": {
+            "EXTERNAL": 1,
+            "FABulous": 1,
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:47.49-47.60"
+          }
+        },
+        "SOC_ARLEN": {
+          "hide_name": 0,
+          "bits": [ 129, 130, 131, 132, 133, 134, 135, 136 ],
+          "attributes": {
+            "EXTERNAL": 1,
+            "FABulous": 1,
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:43.49-43.58"
+          }
+        },
+        "SOC_ARLOCK": {
+          "hide_name": 0,
+          "bits": [ 142 ],
+          "attributes": {
+            "EXTERNAL": 1,
+            "FABulous": 1,
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:46.49-46.59"
+          }
+        },
+        "SOC_ARREADY": {
+          "hide_name": 0,
+          "bits": [ 148 ],
+          "attributes": {
+            "EXTERNAL": 1,
+            "FABulous": 1,
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:49.49-49.60"
+          }
+        },
+        "SOC_ARSIZE": {
+          "hide_name": 0,
+          "bits": [ 137, 138, 139 ],
+          "attributes": {
+            "EXTERNAL": 1,
+            "FABulous": 1,
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:44.49-44.59"
+          }
+        },
+        "SOC_ARVALID": {
+          "hide_name": 0,
+          "bits": [ 147 ],
+          "attributes": {
+            "EXTERNAL": 1,
+            "FABulous": 1,
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:48.49-48.60"
+          }
+        },
+        "SOC_AWADDR": {
+          "hide_name": 0,
+          "bits": [ 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33 ],
+          "attributes": {
+            "EXTERNAL": 1,
+            "FABulous": 1,
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:23.49-23.59"
+          }
+        },
+        "SOC_AWBURST": {
+          "hide_name": 0,
+          "bits": [ 45, 46 ],
+          "attributes": {
+            "EXTERNAL": 1,
+            "FABulous": 1,
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:26.49-26.60"
+          }
+        },
+        "SOC_AWCACHE": {
+          "hide_name": 0,
+          "bits": [ 48, 49, 50, 51 ],
+          "attributes": {
+            "EXTERNAL": 1,
+            "FABulous": 1,
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:28.49-28.60"
+          }
+        },
+        "SOC_AWLEN": {
+          "hide_name": 0,
+          "bits": [ 34, 35, 36, 37, 38, 39, 40, 41 ],
+          "attributes": {
+            "EXTERNAL": 1,
+            "FABulous": 1,
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:24.49-24.58"
+          }
+        },
+        "SOC_AWLOCK": {
+          "hide_name": 0,
+          "bits": [ 47 ],
+          "attributes": {
+            "EXTERNAL": 1,
+            "FABulous": 1,
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:27.49-27.59"
+          }
+        },
+        "SOC_AWREADY": {
+          "hide_name": 0,
+          "bits": [ 53 ],
+          "attributes": {
+            "EXTERNAL": 1,
+            "FABulous": 1,
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:30.49-30.60"
+          }
+        },
+        "SOC_AWSIZE": {
+          "hide_name": 0,
+          "bits": [ 42, 43, 44 ],
+          "attributes": {
+            "EXTERNAL": 1,
+            "FABulous": 1,
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:25.49-25.59"
+          }
+        },
+        "SOC_AWVALID": {
+          "hide_name": 0,
+          "bits": [ 52 ],
+          "attributes": {
+            "EXTERNAL": 1,
+            "FABulous": 1,
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:29.49-29.60"
+          }
+        },
+        "SOC_BREADY": {
+          "hide_name": 0,
+          "bits": [ 96 ],
+          "attributes": {
+            "EXTERNAL": 1,
+            "FABulous": 1,
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:40.49-40.59"
+          }
+        },
+        "SOC_BRESP": {
+          "hide_name": 0,
+          "bits": [ 93, 94 ],
+          "attributes": {
+            "EXTERNAL": 1,
+            "FABulous": 1,
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:38.49-38.58"
+          }
+        },
+        "SOC_BVALID": {
+          "hide_name": 0,
+          "bits": [ 95 ],
+          "attributes": {
+            "EXTERNAL": 1,
+            "FABulous": 1,
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:39.49-39.59"
+          }
+        },
+        "SOC_RDATA": {
+          "hide_name": 0,
+          "bits": [ 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180 ],
+          "attributes": {
+            "EXTERNAL": 1,
+            "FABulous": 1,
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:51.49-51.58"
+          }
+        },
+        "SOC_RLAST": {
+          "hide_name": 0,
+          "bits": [ 183 ],
+          "attributes": {
+            "EXTERNAL": 1,
+            "FABulous": 1,
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:53.49-53.58"
+          }
+        },
+        "SOC_RREADY": {
+          "hide_name": 0,
+          "bits": [ 185 ],
+          "attributes": {
+            "EXTERNAL": 1,
+            "FABulous": 1,
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:55.49-55.59"
+          }
+        },
+        "SOC_RRESP": {
+          "hide_name": 0,
+          "bits": [ 181, 182 ],
+          "attributes": {
+            "EXTERNAL": 1,
+            "FABulous": 1,
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:52.49-52.58"
+          }
+        },
+        "SOC_RVALID": {
+          "hide_name": 0,
+          "bits": [ 184 ],
+          "attributes": {
+            "EXTERNAL": 1,
+            "FABulous": 1,
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:54.49-54.59"
+          }
+        },
+        "SOC_WDATA": {
+          "hide_name": 0,
+          "bits": [ 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85 ],
+          "attributes": {
+            "EXTERNAL": 1,
+            "FABulous": 1,
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:32.49-32.58"
+          }
+        },
+        "SOC_WLAST": {
+          "hide_name": 0,
+          "bits": [ 90 ],
+          "attributes": {
+            "EXTERNAL": 1,
+            "FABulous": 1,
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:34.49-34.58"
+          }
+        },
+        "SOC_WREADY": {
+          "hide_name": 0,
+          "bits": [ 92 ],
+          "attributes": {
+            "EXTERNAL": 1,
+            "FABulous": 1,
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:36.49-36.59"
+          }
+        },
+        "SOC_WSTRB": {
+          "hide_name": 0,
+          "bits": [ 86, 87, 88, 89 ],
+          "attributes": {
+            "EXTERNAL": 1,
+            "FABulous": 1,
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:33.49-33.58"
+          }
+        },
+        "SOC_WVALID": {
+          "hide_name": 0,
+          "bits": [ 91 ],
+          "attributes": {
+            "EXTERNAL": 1,
+            "FABulous": 1,
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/AXI_M_IO_W/AXI_M_BEL.v:35.49-35.59"
+          }
+        }
+      }
+    }
+  }
+}

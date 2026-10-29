@@ -1,0 +1,390 @@
+{
+  "creator": "Yosys 0.68 (git sha1 38e001a6ff74ca434bf4cc02c053f53619160ab0, Release, Clang /nix/store/874j5xydsj6nr6i1zdrjvhln5gmxvvrr-clang-wrapper-21.1.8/bin/clang++ 21.1.8)",
+  "modules": {
+    "NPU_ACCUM_SRAM_BEL": {
+      "attributes": {
+        "WRITE_LOCK_7": 7,
+        "WRITE_LOCK_6": 6,
+        "WRITE_LOCK_5": 5,
+        "WRITE_LOCK_4": 4,
+        "WRITE_LOCK_3": 3,
+        "WRITE_LOCK_2": 2,
+        "WRITE_LOCK_1": 1,
+        "WRITE_LOCK": 0,
+        "BelMap": 1,
+        "FABulous": 1,
+        "dynports": 1,
+        "top": 1,
+        "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/NPU_ACCUM_S/NPU_ACCUM_SRAM_BEL.v:13.1-68.10"
+      },
+      "parameter_default_values": {
+        "NoConfigBits": 8
+      },
+      "ports": {
+        "NPU_ADDR": {
+          "direction": "output",
+          "bits": [ 2, 3, 4, 5, 6, 7, 8, 9 ]
+        },
+        "NPU_WE": {
+          "direction": "output",
+          "bits": [ 10, 11, 12, 13, 14, 15, 16, 17 ]
+        },
+        "NPU_WDATA": {
+          "direction": "output",
+          "bits": [ 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49 ]
+        },
+        "NPU_READ_BANK_SEL": {
+          "direction": "output",
+          "bits": [ 50, 51, 52 ]
+        },
+        "NPU_RDATA": {
+          "direction": "input",
+          "bits": [ 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84 ]
+        },
+        "FAB_ADDR": {
+          "direction": "input",
+          "bits": [ 85, 86, 87, 88, 89, 90, 91, 92 ]
+        },
+        "FAB_WE": {
+          "direction": "input",
+          "bits": [ 93, 94, 95, 96, 97, 98, 99, 100 ]
+        },
+        "FAB_WDATA": {
+          "direction": "input",
+          "bits": [ 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132 ]
+        },
+        "FAB_READ_BANK_SEL": {
+          "direction": "input",
+          "bits": [ 133, 134, 135 ]
+        },
+        "FAB_RDATA": {
+          "direction": "output",
+          "bits": [ 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167 ]
+        },
+        "UserCLK": {
+          "direction": "input",
+          "bits": [ 168 ]
+        },
+        "ConfigBits": {
+          "direction": "input",
+          "bits": [ 169, 170, 171, 172, 173, 174, 175, 176 ]
+        }
+      },
+      "cells": {
+        "$and$/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/NPU_ACCUM_S/NPU_ACCUM_SRAM_BEL.v:49$2": {
+          "hide_name": 1,
+          "type": "$and",
+          "parameters": {
+            "A_SIGNED": 0,
+            "A_WIDTH": 8,
+            "B_SIGNED": 0,
+            "B_WIDTH": 8,
+            "Y_WIDTH": 8
+          },
+          "attributes": {
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/NPU_ACCUM_S/NPU_ACCUM_SRAM_BEL.v:49.29-49.49"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 93, 94, 95, 96, 97, 98, 99, 100 ],
+            "B": [ 177, 178, 179, 180, 181, 182, 183, 184 ],
+            "Y": [ 185, 186, 187, 188, 189, 190, 191, 192 ]
+          }
+        },
+        "$not$/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/NPU_ACCUM_S/NPU_ACCUM_SRAM_BEL.v:49$1": {
+          "hide_name": 1,
+          "type": "$not",
+          "parameters": {
+            "A_SIGNED": 0,
+            "A_WIDTH": 8,
+            "Y_WIDTH": 8
+          },
+          "attributes": {
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/NPU_ACCUM_S/NPU_ACCUM_SRAM_BEL.v:49.38-49.49"
+          },
+          "port_directions": {
+            "A": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 169, 170, 171, 172, 173, 174, 175, 176 ],
+            "Y": [ 177, 178, 179, 180, 181, 182, 183, 184 ]
+          }
+        },
+        "$procdff$5": {
+          "hide_name": 1,
+          "type": "$dff",
+          "parameters": {
+            "CLK_POLARITY": 1,
+            "WIDTH": 32
+          },
+          "attributes": {
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/NPU_ACCUM_S/NPU_ACCUM_SRAM_BEL.v:64.5-66.8"
+          },
+          "port_directions": {
+            "CLK": "input",
+            "D": "input",
+            "Q": "output"
+          },
+          "connections": {
+            "CLK": [ 168 ],
+            "D": [ 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84 ],
+            "Q": [ 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167 ]
+          }
+        },
+        "$procdff$6": {
+          "hide_name": 1,
+          "type": "$dff",
+          "parameters": {
+            "CLK_POLARITY": 1,
+            "WIDTH": 8
+          },
+          "attributes": {
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/NPU_ACCUM_S/NPU_ACCUM_SRAM_BEL.v:54.5-59.8"
+          },
+          "port_directions": {
+            "CLK": "input",
+            "D": "input",
+            "Q": "output"
+          },
+          "connections": {
+            "CLK": [ 168 ],
+            "D": [ 85, 86, 87, 88, 89, 90, 91, 92 ],
+            "Q": [ 2, 3, 4, 5, 6, 7, 8, 9 ]
+          }
+        },
+        "$procdff$7": {
+          "hide_name": 1,
+          "type": "$dff",
+          "parameters": {
+            "CLK_POLARITY": 1,
+            "WIDTH": 8
+          },
+          "attributes": {
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/NPU_ACCUM_S/NPU_ACCUM_SRAM_BEL.v:54.5-59.8"
+          },
+          "port_directions": {
+            "CLK": "input",
+            "D": "input",
+            "Q": "output"
+          },
+          "connections": {
+            "CLK": [ 168 ],
+            "D": [ 185, 186, 187, 188, 189, 190, 191, 192 ],
+            "Q": [ 10, 11, 12, 13, 14, 15, 16, 17 ]
+          }
+        },
+        "$procdff$8": {
+          "hide_name": 1,
+          "type": "$dff",
+          "parameters": {
+            "CLK_POLARITY": 1,
+            "WIDTH": 32
+          },
+          "attributes": {
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/NPU_ACCUM_S/NPU_ACCUM_SRAM_BEL.v:54.5-59.8"
+          },
+          "port_directions": {
+            "CLK": "input",
+            "D": "input",
+            "Q": "output"
+          },
+          "connections": {
+            "CLK": [ 168 ],
+            "D": [ 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132 ],
+            "Q": [ 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49 ]
+          }
+        },
+        "$procdff$9": {
+          "hide_name": 1,
+          "type": "$dff",
+          "parameters": {
+            "CLK_POLARITY": 1,
+            "WIDTH": 3
+          },
+          "attributes": {
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/NPU_ACCUM_S/NPU_ACCUM_SRAM_BEL.v:54.5-59.8"
+          },
+          "port_directions": {
+            "CLK": "input",
+            "D": "input",
+            "Q": "output"
+          },
+          "connections": {
+            "CLK": [ 168 ],
+            "D": [ 133, 134, 135 ],
+            "Q": [ 50, 51, 52 ]
+          }
+        }
+      },
+      "netnames": {
+        "$0\\FAB_RDATA[31:0]": {
+          "hide_name": 1,
+          "bits": [ 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84 ],
+          "attributes": {
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/NPU_ACCUM_S/NPU_ACCUM_SRAM_BEL.v:64.5-66.8"
+          }
+        },
+        "$0\\NPU_ADDR[7:0]": {
+          "hide_name": 1,
+          "bits": [ 85, 86, 87, 88, 89, 90, 91, 92 ],
+          "attributes": {
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/NPU_ACCUM_S/NPU_ACCUM_SRAM_BEL.v:54.5-59.8"
+          }
+        },
+        "$0\\NPU_READ_BANK_SEL[2:0]": {
+          "hide_name": 1,
+          "bits": [ 133, 134, 135 ],
+          "attributes": {
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/NPU_ACCUM_S/NPU_ACCUM_SRAM_BEL.v:54.5-59.8"
+          }
+        },
+        "$0\\NPU_WDATA[31:0]": {
+          "hide_name": 1,
+          "bits": [ 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132 ],
+          "attributes": {
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/NPU_ACCUM_S/NPU_ACCUM_SRAM_BEL.v:54.5-59.8"
+          }
+        },
+        "$0\\NPU_WE[7:0]": {
+          "hide_name": 1,
+          "bits": [ 185, 186, 187, 188, 189, 190, 191, 192 ],
+          "attributes": {
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/NPU_ACCUM_S/NPU_ACCUM_SRAM_BEL.v:54.5-59.8"
+          }
+        },
+        "$and$/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/NPU_ACCUM_S/NPU_ACCUM_SRAM_BEL.v:49$2_Y": {
+          "hide_name": 1,
+          "bits": [ 185, 186, 187, 188, 189, 190, 191, 192 ],
+          "attributes": {
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/NPU_ACCUM_S/NPU_ACCUM_SRAM_BEL.v:49.29-49.49"
+          }
+        },
+        "$not$/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/NPU_ACCUM_S/NPU_ACCUM_SRAM_BEL.v:49$1_Y": {
+          "hide_name": 1,
+          "bits": [ 177, 178, 179, 180, 181, 182, 183, 184 ],
+          "attributes": {
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/NPU_ACCUM_S/NPU_ACCUM_SRAM_BEL.v:49.38-49.49"
+          }
+        },
+        "ConfigBits": {
+          "hide_name": 0,
+          "bits": [ 169, 170, 171, 172, 173, 174, 175, 176 ],
+          "attributes": {
+            "FABulous": 1,
+            "GLOBAL": 1,
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/NPU_ACCUM_S/NPU_ACCUM_SRAM_BEL.v:42.58-42.68"
+          }
+        },
+        "FAB_ADDR": {
+          "hide_name": 0,
+          "bits": [ 85, 86, 87, 88, 89, 90, 91, 92 ],
+          "attributes": {
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/NPU_ACCUM_S/NPU_ACCUM_SRAM_BEL.v:28.24-28.32"
+          }
+        },
+        "FAB_RDATA": {
+          "hide_name": 0,
+          "bits": [ 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167 ],
+          "attributes": {
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/NPU_ACCUM_S/NPU_ACCUM_SRAM_BEL.v:32.24-32.33"
+          }
+        },
+        "FAB_READ_BANK_SEL": {
+          "hide_name": 0,
+          "bits": [ 133, 134, 135 ],
+          "attributes": {
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/NPU_ACCUM_S/NPU_ACCUM_SRAM_BEL.v:31.24-31.41"
+          }
+        },
+        "FAB_WDATA": {
+          "hide_name": 0,
+          "bits": [ 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132 ],
+          "attributes": {
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/NPU_ACCUM_S/NPU_ACCUM_SRAM_BEL.v:30.24-30.33"
+          }
+        },
+        "FAB_WE": {
+          "hide_name": 0,
+          "bits": [ 93, 94, 95, 96, 97, 98, 99, 100 ],
+          "attributes": {
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/NPU_ACCUM_S/NPU_ACCUM_SRAM_BEL.v:29.24-29.30"
+          }
+        },
+        "NPU_ADDR": {
+          "hide_name": 0,
+          "bits": [ 2, 3, 4, 5, 6, 7, 8, 9 ],
+          "attributes": {
+            "EXTERNAL": 1,
+            "FABulous": 1,
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/NPU_ACCUM_S/NPU_ACCUM_SRAM_BEL.v:19.49-19.57"
+          }
+        },
+        "NPU_RDATA": {
+          "hide_name": 0,
+          "bits": [ 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84 ],
+          "attributes": {
+            "EXTERNAL": 1,
+            "FABulous": 1,
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/NPU_ACCUM_S/NPU_ACCUM_SRAM_BEL.v:23.49-23.58"
+          }
+        },
+        "NPU_READ_BANK_SEL": {
+          "hide_name": 0,
+          "bits": [ 50, 51, 52 ],
+          "attributes": {
+            "EXTERNAL": 1,
+            "FABulous": 1,
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/NPU_ACCUM_S/NPU_ACCUM_SRAM_BEL.v:22.49-22.66"
+          }
+        },
+        "NPU_WDATA": {
+          "hide_name": 0,
+          "bits": [ 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49 ],
+          "attributes": {
+            "EXTERNAL": 1,
+            "FABulous": 1,
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/NPU_ACCUM_S/NPU_ACCUM_SRAM_BEL.v:21.49-21.58"
+          }
+        },
+        "NPU_WE": {
+          "hide_name": 0,
+          "bits": [ 10, 11, 12, 13, 14, 15, 16, 17 ],
+          "attributes": {
+            "EXTERNAL": 1,
+            "FABulous": 1,
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/NPU_ACCUM_S/NPU_ACCUM_SRAM_BEL.v:20.49-20.55"
+          }
+        },
+        "UserCLK": {
+          "hide_name": 0,
+          "bits": [ 168 ],
+          "attributes": {
+            "EXTERNAL": 1,
+            "FABulous": 1,
+            "SHARED_PORT": 1,
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/NPU_ACCUM_S/NPU_ACCUM_SRAM_BEL.v:37.54-37.61"
+          }
+        },
+        "WRITE_LOCK": {
+          "hide_name": 0,
+          "bits": [ 169, 170, 171, 172, 173, 174, 175, 176 ],
+          "attributes": {
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/NPU_ACCUM_S/NPU_ACCUM_SRAM_BEL.v:48.16-48.26"
+          }
+        },
+        "active_we": {
+          "hide_name": 0,
+          "bits": [ 185, 186, 187, 188, 189, 190, 191, 192 ],
+          "attributes": {
+            "src": "/home/marcel/owas/internal/MLFPGA_engine/ip/Fabric/OWAS_fabric_m4/Tile/NPU_ACCUM_S/NPU_ACCUM_SRAM_BEL.v:49.16-49.25"
+          }
+        }
+      }
+    }
+  }
+}
