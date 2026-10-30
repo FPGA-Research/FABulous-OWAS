@@ -1,5 +1,5 @@
 {
-  "creator": "Yosys 0.68 (git sha1 38e001a6ff74ca434bf4cc02c053f53619160ab0, Release, Clang /nix/store/vk3qyda2xs24bw39aw3drflz4cy7w62y-clang-wrapper-21.1.8/bin/clang++ 21.1.8)",
+  "creator": "Yosys 0.68 (git sha1 38e001a6ff74ca434bf4cc02c053f53619160ab0, Release, Clang /nix/store/874j5xydsj6nr6i1zdrjvhln5gmxvvrr-clang-wrapper-21.1.8/bin/clang++ 21.1.8)",
   "modules": {
     "SOC_DEBUG_IO": {
       "attributes": {
@@ -34,10 +34,6 @@
           "direction": "output",
           "bits": [ 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53 ]
         },
-        "Co": {
-          "direction": "output",
-          "bits": [ "0" ]
-        },
         "S1END": {
           "direction": "input",
           "bits": [ 54, 55, 56, 57 ]
@@ -57,6 +53,10 @@
         "SS4END": {
           "direction": "input",
           "bits": [ 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101 ]
+        },
+        "Co": {
+          "direction": "output",
+          "bits": [ "0" ]
         },
         "DEBUG_OUT0": {
           "direction": "input",
@@ -6629,7 +6629,7 @@
           "bits": [ "0" ],
           "attributes": {
             "single_bit_vector": "00000000000000000000000000000001",
-            "src": "/mnt/SSD4TB/OWAS_NOV/fabulous_A5/MLFPGA_engine/ip/Fabric/OWAS_fabric/Tile/SOC_DEBUG_IO/SOC_DEBUG_IO.v:17.23-17.25"
+            "src": "/mnt/SSD4TB/OWAS_NOV/fabulous_A5/MLFPGA_engine/ip/Fabric/OWAS_fabric/Tile/SOC_DEBUG_IO/SOC_DEBUG_IO.v:22.23-22.25"
           }
         },
         "DEBUG_IN0": {
@@ -9171,28 +9171,28 @@
           "hide_name": 0,
           "bits": [ 54, 55, 56, 57 ],
           "attributes": {
-            "src": "/mnt/SSD4TB/OWAS_NOV/fabulous_A5/MLFPGA_engine/ip/Fabric/OWAS_fabric/Tile/SOC_DEBUG_IO/SOC_DEBUG_IO.v:18.22-18.27"
+            "src": "/mnt/SSD4TB/OWAS_NOV/fabulous_A5/MLFPGA_engine/ip/Fabric/OWAS_fabric/Tile/SOC_DEBUG_IO/SOC_DEBUG_IO.v:17.22-17.27"
           }
         },
         "S2END": {
           "hide_name": 0,
           "bits": [ 62, 63, 64, 65, 66, 67, 68, 69 ],
           "attributes": {
-            "src": "/mnt/SSD4TB/OWAS_NOV/fabulous_A5/MLFPGA_engine/ip/Fabric/OWAS_fabric/Tile/SOC_DEBUG_IO/SOC_DEBUG_IO.v:20.22-20.27"
+            "src": "/mnt/SSD4TB/OWAS_NOV/fabulous_A5/MLFPGA_engine/ip/Fabric/OWAS_fabric/Tile/SOC_DEBUG_IO/SOC_DEBUG_IO.v:19.22-19.27"
           }
         },
         "S2MID": {
           "hide_name": 0,
           "bits": [ 13, 58, 11, 59, 9, 60, 7, 61 ],
           "attributes": {
-            "src": "/mnt/SSD4TB/OWAS_NOV/fabulous_A5/MLFPGA_engine/ip/Fabric/OWAS_fabric/Tile/SOC_DEBUG_IO/SOC_DEBUG_IO.v:19.22-19.27"
+            "src": "/mnt/SSD4TB/OWAS_NOV/fabulous_A5/MLFPGA_engine/ip/Fabric/OWAS_fabric/Tile/SOC_DEBUG_IO/SOC_DEBUG_IO.v:18.22-18.27"
           }
         },
         "S4END": {
           "hide_name": 0,
           "bits": [ 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85 ],
           "attributes": {
-            "src": "/mnt/SSD4TB/OWAS_NOV/fabulous_A5/MLFPGA_engine/ip/Fabric/OWAS_fabric/Tile/SOC_DEBUG_IO/SOC_DEBUG_IO.v:21.23-21.28"
+            "src": "/mnt/SSD4TB/OWAS_NOV/fabulous_A5/MLFPGA_engine/ip/Fabric/OWAS_fabric/Tile/SOC_DEBUG_IO/SOC_DEBUG_IO.v:20.23-20.28"
           }
         },
         "SLOT_SOFT_RST_N": {
@@ -9206,7 +9206,7 @@
           "hide_name": 0,
           "bits": [ 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101 ],
           "attributes": {
-            "src": "/mnt/SSD4TB/OWAS_NOV/fabulous_A5/MLFPGA_engine/ip/Fabric/OWAS_fabric/Tile/SOC_DEBUG_IO/SOC_DEBUG_IO.v:22.23-22.29"
+            "src": "/mnt/SSD4TB/OWAS_NOV/fabulous_A5/MLFPGA_engine/ip/Fabric/OWAS_fabric/Tile/SOC_DEBUG_IO/SOC_DEBUG_IO.v:21.23-21.29"
           }
         },
         "USR_IRQ": {

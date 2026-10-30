@@ -9,6 +9,7 @@ pdk::ihp-sg13cmos5l:
   
   #FABULOUS_IGNORE_DEFAULT_DIE_AREA: true
   DIODE_ON_PORTS: "out"
+  RT_MAX_LAYER: TopMetal1
 
   #CORE_AREA:
   #- 3.84

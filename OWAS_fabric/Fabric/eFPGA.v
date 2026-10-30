@@ -5210,7 +5210,7 @@ assign Column_X9_FrameStrobe = FrameStrobe[MaxFramesPerCol*(9+1)-1:MaxFramesPerC
 assign Column_X10_FrameStrobe = FrameStrobe[MaxFramesPerCol*(10+1)-1:MaxFramesPerCol*10];
 
  //tile IO port will get directly connected to top-level tile module
-(* keep *) N_term_RAM_IO Tile_X0Y0_N_term_RAM_IO (
+(* keep *) N_term_IO_W Tile_X0Y0_N_term_IO_W (
     .N1END(Tile_X0Y1_N1BEG),
     .N2MID(Tile_X0Y1_N2BEG),
     .N2END(Tile_X0Y1_N2BEGb),
@@ -5517,7 +5517,7 @@ assign Column_X10_FrameStrobe = FrameStrobe[MaxFramesPerCol*(10+1)-1:MaxFramesPe
 
 
  //tile IO port will get directly connected to top-level tile module
-(* keep *) N_term_RAM_IO Tile_X10Y0_N_term_RAM_IO (
+(* keep *) N_term_NPU_SLICE Tile_X10Y0_N_term_NPU_SLICE (
     .N1END(Tile_X10Y1_N1BEG),
     .N2MID(Tile_X10Y1_N2BEG),
     .N2END(Tile_X10Y1_N2BEGb),
@@ -15622,7 +15622,7 @@ assign Column_X10_FrameStrobe = FrameStrobe[MaxFramesPerCol*(10+1)-1:MaxFramesPe
 
 
  //tile IO port will get directly connected to top-level tile module
-(* keep *) S_term_RAM_IO Tile_X0Y17_S_term_RAM_IO (
+(* keep *) S_term_IO_W Tile_X0Y17_S_term_IO_W (
     .S1END(Tile_X0Y16_S1BEG),
     .S2MID(Tile_X0Y16_S2BEG),
     .S2END(Tile_X0Y16_S2BEGb),
@@ -15958,7 +15958,7 @@ assign Column_X10_FrameStrobe = FrameStrobe[MaxFramesPerCol*(10+1)-1:MaxFramesPe
 
 
  //tile IO port will get directly connected to top-level tile module
-(* keep *) S_term_RAM_IO Tile_X10Y17_S_term_RAM_IO (
+(* keep *) S_term_NPU_SLICE Tile_X10Y17_S_term_NPU_SLICE (
     .S1END(Tile_X10Y16_S1BEG),
     .S2MID(Tile_X10Y16_S2BEG),
     .S2END(Tile_X10Y16_S2BEGb),

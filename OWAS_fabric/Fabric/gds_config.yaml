@@ -38,19 +38,12 @@ pdk::sky130A:
   RT_CLOCK_MAX_LAYER: "met4"
   RT_MAX_LAYER: "met4"
 
-pdk::ihp-cmos5l:
-  PDN_VERTICAL_LAYER: TopMetal1
-  PDN_HORIZONTAL_LAYER: Metal4
-
-  PDN_VWIDTH: 2.2
-  PDN_VSPACING: 4.0
-  PDN_VPITCH: 75.6
-  PDN_VOFFSET: 13.6
-
-  PDN_HWIDTH: 2.0
-  PDN_HSPACING: 4.0
-  PDN_HPITCH: 75.6
-  PDN_HOFFSET: 13.57
+pdk::ihp-sg13cmos5l:
+  # The stitch powers the fabric with Odb.FABulousPDN (copies the tile VPWR/VGND pins), so no PDN_* here.
+  # Stitch routing (edge pins across the halo) stays on Metal4 and below; TopMetal1 is left to the top level.
+  RT_MAX_LAYER: Metal4
+  RT_CLOCK_MAX_LAYER: Metal4
+  OPENROAD_THREADS: 12
 
 pdk::ihp-sg13g2:
   PDN_VERTICAL_LAYER: TopMetal1

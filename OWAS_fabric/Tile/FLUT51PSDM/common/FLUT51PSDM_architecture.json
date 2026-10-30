@@ -1,5 +1,5 @@
 {
-  "creator": "Yosys 0.68 (git sha1 38e001a6ff74ca434bf4cc02c053f53619160ab0, Release, Clang /nix/store/vk3qyda2xs24bw39aw3drflz4cy7w62y-clang-wrapper-21.1.8/bin/clang++ 21.1.8)",
+  "creator": "Yosys 0.68 (git sha1 38e001a6ff74ca434bf4cc02c053f53619160ab0, Release, Clang /nix/store/874j5xydsj6nr6i1zdrjvhln5gmxvvrr-clang-wrapper-21.1.8/bin/clang++ 21.1.8)",
   "modules": {
     "FLUT51PSDM_architecture": {
       "attributes": {
