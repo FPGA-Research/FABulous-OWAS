@@ -24,8 +24,9 @@ PDN_EXTEND_TO: "boundary"
 
 BOTTOM_MARGIN_MULT: 1
 TOP_MARGIN_MULT: 1
-LEFT_MARGIN_MULT: 6
-RIGHT_MARGIN_MULT: 6
+# PDN session 2026-10-28: 6 -> 3 to match FLUT51PSDM, so all tiles put their VPWR/VGND straps at 10.94 + 50k.
+LEFT_MARGIN_MULT: 3
+RIGHT_MARGIN_MULT: 3
 
 DIODE_ON_PORTS: "both"
 
@@ -48,7 +49,7 @@ pdk::sky130A:
 
 pdk::ihp-sg13g2:
   # Routing
-  RT_MAX_LAYER: TopMetal1
+  RT_MAX_LAYER: Metal4
 
   DIODE_CELL: "sg13g2_antennanp/A"
 
@@ -63,7 +64,7 @@ pdk::gf180mcuD:
 
 # Shared CMOS5L synthesis, small-latch views, placement and routing settings.
 pdk::ihp-sg13cmos5l:
-  DIODE_ON_PORTS: out
+  DIODE_ON_PORTS: both
   RUN_LINTER: false
   DPL_CELL_PADDING: 0
   #FABULOUS_DRT_TIMEOUT: 16000
@@ -120,7 +121,7 @@ pdk::ihp-sg13cmos5l:
   GRT_OVERFLOW_ITERS: 50
   GRT_ALLOW_CONGESTION: true
   RT_MIN_LAYER: Metal2
-  RT_MAX_LAYER: TopMetal1
+  RT_MAX_LAYER: Metal4
   GRT_ANTENNA_REPAIR_ITERS: 10
   DRT_ANTENNA_REPAIR_ITERS: 10
   DRT_ANTENNA_REPAIR_MARGIN: 10
@@ -133,6 +134,9 @@ pdk::ihp-sg13cmos5l:
   RUN_POST_GRT_RESIZER_TIMING: false
   PDN_MULTILAYER: false
   PDN_EXTEND_TO: boundary
+  PDN_HOFFSET: 19.016
+  PDN_HPITCH: 46.032
+  PDN_HSPACING: 4
   DIODE_CELL: sg13cmos5l_antennanp/A
   EXTRA_EXCLUDED_CELLS:
   - mux
