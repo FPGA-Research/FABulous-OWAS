@@ -9,7 +9,13 @@ pdk::ihp-sg13cmos5l:
   
   #FABULOUS_IGNORE_DEFAULT_DIE_AREA: true
   DIODE_ON_PORTS: "out"
+  CLOCK_PORT: UserCLK
+  CLOCK_NET: "Inst_LA_FLUT51PSDM_architecture.UserCLK"
+  PNR_SDC_FILE: dir::../../FLUT51PSDM.sdc
+  SIGNOFF_SDC_FILE: dir::../../FLUT51PSDM.sdc
+  #DESIGN_REPAIR_BUFFER_OUTPUT_PORTS: True
   RT_MAX_LAYER: TopMetal1
+  RSZ_DONT_TOUCH_RX: test1
 
   #CORE_AREA:
   #- 3.84

@@ -227,7 +227,7 @@ wire[15:0] WW4END_i;
 wire[11:0] WW4BEG_i;
 wire[11:0] W6END_i;
 wire[9:0] W6BEG_i;
-
+wire UserCLK_buf ;
 assign FrameData_O_i = FrameData_i;
 
 my_buf data_inbuf_0 (
@@ -1688,11 +1688,11 @@ my_buf W6BEG_outbuf_9 (
     .X(W6BEG[9])
 );
 
-clk_buf inst_clk_buf (
-    .A(UserCLK),
-    .X(UserCLKo)
-);
 
+(* keep *)
+sg13cmos5l_buf_16 test (.A(UserCLK), .X(UserCLK_buf));
+(* keep *)
+sg13cmos5l_buf_16 test1 (.A(UserCLK), .X(UserCLKo));
 
  //configuration storage latches
 FLUT51PSDM_ConfigMem
@@ -1726,7 +1726,7 @@ FLUT51PSDM_architecture Inst_LA_FLUT51PSDM_architecture (
     .AY5(LA_AY5),
     .AQ5(LA_AQ5),
     .Co(LA_Co),
-    .UserCLK(UserCLK),
+    .UserCLK(UserCLK_buf),
     .ConfigBits(ConfigBits[42-1:0])
 );
 
@@ -1745,7 +1745,7 @@ FLUT51PSDM_architecture Inst_LB_FLUT51PSDM_architecture (
     .AY5(LB_AY5),
     .AQ5(LB_AQ5),
     .Co(LB_Co),
-    .UserCLK(UserCLK),
+    .UserCLK(UserCLK_buf),
     .ConfigBits(ConfigBits[84-1:42])
 );
 
@@ -1764,7 +1764,7 @@ FLUT51PSDM_architecture Inst_LC_FLUT51PSDM_architecture (
     .AY5(LC_AY5),
     .AQ5(LC_AQ5),
     .Co(LC_Co),
-    .UserCLK(UserCLK),
+    .UserCLK(UserCLK_buf),
     .ConfigBits(ConfigBits[126-1:84])
 );
 
@@ -1783,7 +1783,7 @@ FLUT51PSDM_architecture Inst_LD_FLUT51PSDM_architecture (
     .AY5(LD_AY5),
     .AQ5(LD_AQ5),
     .Co(LD_Co),
-    .UserCLK(UserCLK),
+    .UserCLK(UserCLK_buf),
     .ConfigBits(ConfigBits[168-1:126])
 );
 
@@ -1802,7 +1802,7 @@ FLUT51PSDM_architecture Inst_LE_FLUT51PSDM_architecture (
     .AY5(LE_AY5),
     .AQ5(LE_AQ5),
     .Co(LE_Co),
-    .UserCLK(UserCLK),
+    .UserCLK(UserCLK_buf),
     .ConfigBits(ConfigBits[210-1:168])
 );
 
@@ -1821,7 +1821,7 @@ FLUT51PSDM_architecture Inst_LF_FLUT51PSDM_architecture (
     .AY5(LF_AY5),
     .AQ5(LF_AQ5),
     .Co(LF_Co),
-    .UserCLK(UserCLK),
+    .UserCLK(UserCLK_buf),
     .ConfigBits(ConfigBits[252-1:210])
 );
 
@@ -1840,7 +1840,7 @@ FLUT51PSDM_architecture Inst_LG_FLUT51PSDM_architecture (
     .AY5(LG_AY5),
     .AQ5(LG_AQ5),
     .Co(LG_Co),
-    .UserCLK(UserCLK),
+    .UserCLK(UserCLK_buf),
     .ConfigBits(ConfigBits[294-1:252])
 );
 
@@ -1859,7 +1859,7 @@ FLUT51PSDM_architecture Inst_LH_FLUT51PSDM_architecture (
     .AY5(LH_AY5),
     .AQ5(LH_AQ5),
     .Co(LH_Co),
-    .UserCLK(UserCLK),
+    .UserCLK(UserCLK_buf),
     .ConfigBits(ConfigBits[336-1:294])
 );
 
