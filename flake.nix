@@ -184,6 +184,11 @@
           envVars = {
             # Tells FABulous the nix yosys binary is named fab-yosys.
             FAB_YOSYS_PATH = "fab-yosys";
+            # TODO: this hash is exported for every PDK, so it may break the flow for
+            # PDKs other than ihp-sg13. Revisit before integrating upstream.
+            # PDK version for ihp-sg13 (= PDK_HASH in MLFPGA_engine versions.env). Overrides the
+            # hash this LibreLane rev recommends (22f4335) and any .env value; FABulous only warns.
+            FAB_PDK_HASH = "89d42ee6d2fd9b50b86a1aada6fee6673c3e6008";
             # libghdl, dlopen'd by the yosys ghdl plugin, can't derive its own
             # install prefix (only the ghdl binary can), so it needs this to
             # find the IEEE libraries.

@@ -156,6 +156,7 @@ def get_routing_obstructions(
     _, _, width, height = config["DIE_AREA"]
     layers = get_layer_info(config)
     parsed_obstructions = defaultdict(list)
+    provided_layers = set()
     for obs in obstructions:
         if len(obs) != 5:
             raise ValueError(
@@ -164,6 +165,7 @@ def get_routing_obstructions(
             )
         met, *box = obs
         parsed_obstructions[met].append(box)
+        provided_layers.add(met)
 
     zero = Decimal(0)
     # Add thin obstructions at all the edges
@@ -182,6 +184,17 @@ def get_routing_obstructions(
         parsed_obstructions[layer_name].append(
             (width, zero, width + x_pitch / 2, height)
         )
+
+    # TODO: the layer name and PDN stripe layout are specific to the MLFPGA fabric
+    # and may break the flow for other PDKs. Revisit before integrating upstream.
+    if "TopMetal1" not in provided_layers and "TopMetal1" in layers:
+        obstruction_width = 2 * config["PDN_HWIDTH"] + config["PDN_HSPACING"]
+        stripe_start = config["PDN_HOFFSET"]
+        while stripe_start < height:
+            parsed_obstructions["TopMetal1"].append(
+                (0, stripe_start, width, stripe_start + obstruction_width)
+            )
+            stripe_start += config["PDN_HPITCH"]
 
     result = []
     for layer, boxes in parsed_obstructions.items():
