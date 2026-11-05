@@ -1,11 +1,17 @@
 """Pytest configuration and fixtures for reference testing."""
 
+import subprocess
 from pathlib import Path
 
 import pytest
 
 from fabulous.fabulous_repl.helper import clone_git_repo
 from tests.reference_test.reference_projects_test import load_reference_projects_config
+
+# Last FABulous-demo-projects commit before the references were regenerated for
+# upstream's channel port order (#1130), which this fork has not picked up. Follow
+# the repo's main branch again once it has.
+REFERENCE_PROJECTS_COMMIT = "0ba52e443dded655270de8118da415f26fa6c2b0"
 
 
 # Session-level configuration storage
@@ -66,10 +72,17 @@ def pytest_configure(config: pytest.Config) -> None:
     _session_config.download_projects = config.getoption("--download-projects")
     _session_config.verbose = config.getoption("-v") > 0
 
-    if _session_config.download_projects and (
-        not clone_git_repo(_session_config.repo_url, _session_config.projects_dir)
-    ):
-        raise AssertionError("Could not set up reference projects")
+    if _session_config.download_projects:
+        if not clone_git_repo(_session_config.repo_url, _session_config.projects_dir):
+            raise AssertionError("Could not set up reference projects")
+        # `clone_git_repo` clones with a depth of 1, so fetch the pinned commit.
+        for git_args in (
+            ["fetch", "--depth", "1", "origin", REFERENCE_PROJECTS_COMMIT],
+            ["checkout", "--detach", REFERENCE_PROJECTS_COMMIT],
+        ):
+            subprocess.run(
+                ["git", *git_args], cwd=_session_config.projects_dir, check=True
+            )
 
     if not _session_config.projects_conf.exists():
         raise FileNotFoundError(
