@@ -1105,6 +1105,32 @@ The prefix removal is case-insensitive (`fab_attr_FF`, `FAB_ATTR_ff`, and
 
 (bitstream)=
 
+### UserCLK leaf buffers
+
+By default every BEL with a `UserCLK` port is connected straight to the tile's
+`UserCLK` input. The `USER_CLK_LEAF` keyword inserts explicit leaf clock
+buffers instead:
+
+```python
+TILE, LUT4AB
+...
+BEL,  ./LUT4c_frame_config_dffesr.v, LA_
+...
+BEL,  ./LUT4c_frame_config_dffesr.v, LH_
+USER_CLK_LEAF, 4
+MATRIX, LUT4AB_switch_matrix.list
+EndTILE
+```
+
+The value is the number of `UserCLK` BELs per leaf buffer, grouped in CSV
+order. Each group gets one `clk_leaf_buf` instance driving `UserCLK_leaf<i>`;
+in the example `LA_`..`LD_` use `UserCLK_leaf0` and `LE_`..`LH_` use
+`UserCLK_leaf1`. The `UserCLKo` pass-through (`clk_buf`) stays on `UserCLK`.
+
+`clk_leaf_buf` is defined in `Fabric/models_pack.v` (or `.vhdl`) as a plain
+assignment; replace it with a clock buffer cell of your PDK and protect it from
+the resizer (e.g. `RSZ_DONT_TOUCH_RX`).
+
 ### Bitstream remapping
 
 FABulous will take care when implementing the configuration logic and bitstream encoding and the mapping of this into configuration bitstreams. This can be done automatically.

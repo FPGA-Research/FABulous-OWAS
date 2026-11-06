@@ -297,6 +297,7 @@ def parseTilesCSV(
         matrixDir: Path | None = None
         gen_ios: list[Gen_IO] = []
         withUserCLK = False
+        user_clk_leaf_bels: int | None = None
         genMatrixList = False
         tileCarry: dict[str, dict[IO, str]] = {}
         localSharedPorts: dict[str, list[TilePort]] = {}
@@ -498,6 +499,19 @@ def parseTilesCSV(
                 else:
                     matrixDir = fileName.parent.joinpath(temp[1]).absolute()
 
+            elif temp[0] == "USER_CLK_LEAF":
+                if user_clk_leaf_bels is not None:
+                    raise InvalidTileDefinition(
+                        f"USER_CLK_LEAF is defined more than once in tile {tileName}."
+                    )
+                value = temp[1] if len(temp) > 1 else ""
+                if not value.isdigit() or int(value) < 1:
+                    raise InvalidTileDefinition(
+                        f"USER_CLK_LEAF in tile {tileName} needs a positive number "
+                        f"of BELs per leaf buffer, got {value!r}."
+                    )
+                user_clk_leaf_bels = int(value)
+
             elif temp[0] == "INCLUDE":
                 p = fileName.parent.joinpath(temp[1])
                 if not p.exists():
@@ -521,10 +535,15 @@ def parseTilesCSV(
                 raise InvalidTileDefinition(
                     f"Unknown tile description {temp[0]} in tile {tileName}. "
                     f"Valid descriptions are {', '.join(d.value for d in Direction)}, "
-                    "BEL, GEN_IO, MATRIX, and INCLUDE."
+                    "BEL, GEN_IO, MATRIX, INCLUDE, and USER_CLK_LEAF."
                 )
 
         withUserCLK = any(bel.withUserCLK for bel in bels)
+        if user_clk_leaf_bels is not None and not withUserCLK:
+            raise InvalidTileDefinition(
+                f"USER_CLK_LEAF is set in tile {tileName}, but none of its BELs "
+                "has a UserCLK port."
+            )
 
         if matrixDir is None:
             raise InvalidTileDefinition(
@@ -552,6 +571,7 @@ def parseTilesCSV(
                 ),
                 gen_ios=gen_ios,
                 userCLK=withUserCLK,
+                user_clk_leaf_bels=user_clk_leaf_bels,
             )
         )
 

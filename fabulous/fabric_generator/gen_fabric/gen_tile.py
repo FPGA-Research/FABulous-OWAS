@@ -39,6 +39,39 @@ from fabulous.fabric_generator.code_generator.code_generator_VHDL import (
 )
 
 
+def user_clk_bel_nets(tile: Tile, disable_user_clk: bool) -> list[str | None]:
+    """Return the clock net that drives the UserCLK port of each BEL of a tile.
+
+    With `USER_CLK_LEAF` the UserCLK BELs are grouped in CSV order and group `i`
+    is driven by `UserCLK_leaf{i}`, otherwise by `UserCLK` directly.
+
+    Parameters
+    ----------
+    tile : Tile
+        The tile whose BELs are connected.
+    disable_user_clk : bool
+        If True, no BEL gets a UserCLK connection.
+
+    Returns
+    -------
+    list[str | None]
+        One entry per BEL in `tile.bels`: the net name, or None if the BEL has
+        no UserCLK port or the UserCLK is disabled.
+    """
+    nets: list[str | None] = []
+    clk_bel_index = 0
+    for bel in tile.bels:
+        if disable_user_clk or not any(p[0] == "UserCLK" for p in bel.sharedPort):
+            nets.append(None)
+            continue
+        if tile.user_clk_leaf_bels is None:
+            nets.append("UserCLK")
+        else:
+            nets.append(f"UserCLK_leaf{clk_bel_index // tile.user_clk_leaf_bels}")
+        clk_bel_index += 1
+    return nets
+
+
 def generateTile(
     writer: CodeGenerator,
     tile: Tile,
@@ -253,6 +286,16 @@ def generateTile(
                 writer.addConnectionScalar(i)
                 repeatDeclaration.add(f"{bel.prefix}{i}")
 
+    bel_clk_nets = user_clk_bel_nets(tile, disable_user_clk)
+    leaf_nets = sorted(
+        {n for n in bel_clk_nets if n is not None and n != "UserCLK"},
+        key=lambda n: int(n.removeprefix("UserCLK_leaf")),
+    )
+    if leaf_nets:
+        writer.addComment("UserCLK leaf buffer outputs", onNewLine=True)
+        for net in leaf_nets:
+            writer.addConnectionScalar(net)
+
     # Jump wires
     writer.addComment("Jump wires", onNewLine=True)
     for p in tile.portsInfo:
@@ -396,6 +439,13 @@ def generateTile(
             portsPairs=[("A", "UserCLK"), ("X", "UserCLKo")],
         )
 
+    for net in leaf_nets:
+        writer.addInstantiation(
+            "clk_leaf_buf",
+            f"inst_clk_leaf{net.removeprefix('UserCLK_leaf')}",
+            portsPairs=[("A", "UserCLK"), ("X", net)],
+        )
+
     writer.addNewLine()
     # top configuration data daisy chaining
     if config_bit_mode == ConfigBitMode.FLIPFLOP_CHAIN:
@@ -426,7 +476,7 @@ def generateTile(
 
     belCounter = 0
     belConfigBitsCounter = 0
-    for bel in tile.bels:
+    for bel, bel_clk_net in zip(tile.bels, bel_clk_nets, strict=True):
         port_dict = defaultdict(list)
         ports_pairs = []
         portList = []
@@ -451,8 +501,8 @@ def generateTile(
         # Shared ports
         for port in bel.sharedPort:
             if port[0] == "UserCLK":
-                if not disable_user_clk:
-                    userclk_pair = (port[0], port[0])
+                if bel_clk_net is not None:
+                    userclk_pair = (port[0], bel_clk_net)
             else:
                 ports_pairs.append((port[0], port[0]))
 

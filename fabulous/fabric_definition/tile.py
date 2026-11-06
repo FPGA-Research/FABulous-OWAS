@@ -42,6 +42,9 @@ class Tile:
     pinOrderConfig : dict[Side, PinOrderConfig] | None, optional
         Configuration for pin ordering on each side of the tile. If None, defaults to
         BUS_MAJOR sorting on all sides.
+    user_clk_leaf_bels : int | None, optional
+        If set, UserCLK reaches the BELs through `clk_leaf_buf` leaf buffers, one
+        per group of this many UserCLK BELs (in CSV order), instead of directly.
 
     Attributes
     ----------
@@ -65,6 +68,9 @@ class Tile:
         Whether the tile is part of a super tile. Default is False.
     pinOrderConfig : dict, optional
         Configuration for pin ordering on each side of the tile.
+    user_clk_leaf_bels : int | None
+        Number of UserCLK BELs per leaf clock buffer, or None for direct
+        connection.
     """
 
     name: str
@@ -77,6 +83,7 @@ class Tile:
     tileDir: Path = Path()
     partOfSuperTile: bool = False
     pinOrderConfig: dict = field(default_factory=dict)
+    user_clk_leaf_bels: int | None = None
 
     def __init__(
         self,
@@ -88,6 +95,7 @@ class Tile:
         gen_ios: list[Gen_IO],
         userCLK: bool,
         pinOrderConfig: dict[Side, "PinOrderConfig"] | None = None,
+        user_clk_leaf_bels: int | None = None,
     ) -> None:
         self.name = name
         self.portsInfo = ports
@@ -97,6 +105,7 @@ class Tile:
         self.withUserCLK = userCLK
         self.wireList = []
         self.tileDir = tileDir
+        self.user_clk_leaf_bels = user_clk_leaf_bels
 
         if pinOrderConfig is None:
             from fabulous.fabric_generator.gds_generator.gen_io_pin_config_yaml import (

@@ -352,6 +352,27 @@ begin
 
 end architecture Behavior;
 
+-- UserCLK leaf buffer for the USER_CLK_LEAF tile option.
+
+library ieee;
+  use ieee.std_logic_1164.all;
+  use ieee.numeric_std.all;
+
+entity clk_leaf_buf is
+  port (
+    A : in    std_logic;
+    X : out   std_logic
+  );
+end entity clk_leaf_buf;
+
+architecture Behavior of clk_leaf_buf is
+
+begin
+
+  X <= A;
+
+end architecture Behavior;
+
 library ieee;
   use ieee.std_logic_1164.all;
 
@@ -452,5 +473,12 @@ package my_package is
       X : out   std_logic
     );
   end component clk_buf;
+
+  component clk_leaf_buf is
+    port (
+      A : in    std_logic;
+      X : out   std_logic
+    );
+  end component clk_leaf_buf;
 
 end package my_package;
