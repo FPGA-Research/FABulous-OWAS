@@ -67,7 +67,7 @@ def test_synthesis_command(tmp_path: Path, mocker: MockerFixture, custom: bool) 
     script = tmp_path / "custom recipe.py"
     script.touch()
     excluded_cells = tmp_path / "excluded.txt"
-    excluded_cells.touch()
+    excluded_cells.write_text("*_dlhq_*\n")
     step = FABulousSynthesis()
     step.config = Config(
         {
@@ -76,7 +76,7 @@ def test_synthesis_command(tmp_path: Path, mocker: MockerFixture, custom: bool) 
             "YOSYS_LOG_LEVEL": "ALL",
             "CELL_LIBS": {},
             "PAD_LIBS": {},
-            "EXTRA_EXCLUDED_CELLS": [],
+            "EXTRA_EXCLUDED_CELLS": ["*_sdff*"],
             "SYNTH_EXCLUDED_CELL_FILE": str(excluded_cells),
             "PNR_EXCLUDED_CELL_FILE": str(excluded_cells),
         }
@@ -85,7 +85,6 @@ def test_synthesis_command(tmp_path: Path, mocker: MockerFixture, custom: bool) 
     step.toolbox = mocker.Mock()
     step.toolbox.filter_views.side_effect = [["cells.lib"], []]
     step.toolbox.get_macro_views_by_priority.return_value = []
-    step.toolbox.remove_cells_from_lib.return_value = ["filtered.lib"]
     command = step.get_command(State())
     expected = str(script) if custom else Synthesis.get_script_path(step)
     assert command[1:3] == ["-y", expected]
@@ -93,4 +92,11 @@ def test_synthesis_command(tmp_path: Path, mocker: MockerFixture, custom: bool) 
     assert command[command.index("--extra-in") + 1] == str(tmp_path / "extra.json")
     assert command[command.index("--output") + 1] == str(tmp_path / "tile.nl.v")
     extra = json.loads((tmp_path / "extra.json").read_text())
-    assert extra == {"blackbox_models": ["cells.lib"], "libs_synth": ["filtered.lib"]}
+    # LibreLane passes the libraries unfiltered and leaves applying the
+    # excluded cell patterns to the recipe.
+    extra["excluded_cell_patterns"].sort()
+    assert extra == {
+        "blackbox_models": ["cells.lib"],
+        "libs_synth": ["cells.lib"],
+        "excluded_cell_patterns": ["*_dlhq_*", "*_sdff*"],
+    }
